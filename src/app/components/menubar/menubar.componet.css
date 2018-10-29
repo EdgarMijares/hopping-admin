@@ -1,10 +1,6 @@
-body {
-    margin:0px;
-    padding:0px;
-    box-sizing:border-box;
-    background:#354545;
+.pos-f-t {
+	display: none;
 }
-
 .main_sidebar {
     min-height:100vh;
     position:fixed;
@@ -65,7 +61,6 @@ body {
 .main_sidebar ul li.active:hover i {
     color:#fff;
 }
-
 .main {
     float:right;
     color:#fff;
@@ -78,4 +73,14 @@ body {
 	display: block;
 	margin: 50px auto;
 	width: 70%;
+}
+
+@media only screen and (max-width: 600px){
+	.wrapper, .main_sidebar{
+		display: none;
+	}
+
+	.pos-f-t {
+		display: block;
+	}
 }
