@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menubar.componet.css']
 })
 export class MenubarComponent implements OnInit {
-
+	showFiller = false;
   constructor() { }
 
   ngOnInit() {

@@ -1,9 +1,6 @@
-.pos-f-t {
-	display: none;
-}
 .main_sidebar {
     min-height:100vh;
-    position:fixed;
+    position: fixed;
     top:0;
     left:0;
     width:350px;
@@ -73,14 +70,4 @@
 	display: block;
 	margin: 50px auto;
 	width: 70%;
-}
-
-@media only screen and (max-width: 600px){
-	.wrapper, .main_sidebar{
-		display: none;
-	}
-
-	.pos-f-t {
-		display: block;
-	}
 }

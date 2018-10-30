@@ -1,2 +1,22 @@
-<app-menubar></app-menubar>
-<router-outlet></router-outlet>
+<!-- <app-menubar></app-menubar>
+<router-outlet></router-outlet> -->
+<mat-sidenav-container>
+	<mat-sidenav #sidenav mode="side" opened="false">
+		<div style="width: 350px"></div>
+		<app-menubar style="height: 100vh" ></app-menubar>
+	</mat-sidenav>
+	<mat-toolbar colgr="primary">
+		<i class="fa fa-home" (click)="sidenav.toggle()"></i>
+		HOPPING
+	</mat-toolbar>
+	<router-outlet></router-outlet>
+	<app-footer></app-footer>
+</mat-sidenav-container>
+<!-- <div class="row">
+	<div class="col-3">
+	</div>
+	<div class="col-8">
+		<div class="container">
+		</div>
+	</div>
+</div> -->
