@@ -11,6 +11,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 //COMPONENTES
 import { AppRoutingModule } from './app-routing.module';
@@ -48,7 +49,8 @@ import { OpcionesComponent } from './components/opciones/opciones.component';
 		MatRadioModule,
 		MatSelectModule,
 		FormsModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
