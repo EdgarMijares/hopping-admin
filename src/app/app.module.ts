@@ -5,6 +5,9 @@ import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
 
 //COMPONENTES
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +28,10 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule,
 		MatToolbarModule,
 		MatSidenavModule,
-		BrowserAnimationsModule
+		BrowserAnimationsModule,
+		MatCheckboxModule,
+		MatRadioModule,
+		MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

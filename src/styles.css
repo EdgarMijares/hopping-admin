@@ -1,7 +1,28 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+.container {
+	margin-top: 10px;
+	margin-bottom: 10px
+}
+
 .button-social {
 	margin: 20px;
 	font-size: 25px;
+}
 
+.mat-checkbot .mat-accent {
+  border-color:rgb(66, 134, 244);
+}
+
+.mat-checkbot .mat-accent {
+  color:rgb(66, 134, 244);
+  background-color:rgb(66, 134, 244) ;
+}
+
+.mat-checkbot .mat-accent {
+    background-color:rgb(255, 37, 37,.26)
+}
+
+.btn-rosa{
+	background: #ED5183;
 }
