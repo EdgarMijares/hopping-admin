@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+//MODULES
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 // DISEÑO
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -31,7 +34,9 @@ import { FooterComponent } from './components/footer/footer.component';
 		BrowserAnimationsModule,
 		MatCheckboxModule,
 		MatRadioModule,
-		MatSelectModule
+		MatSelectModule,
+		FormsModule,
+		ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

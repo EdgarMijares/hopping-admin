@@ -11,15 +11,19 @@ export class MyhopComponent implements OnInit {
 
 	selectedInicio: string;
 	selectedTermino: string;
-	
-	horas: any[] = [];
+
+	horas: any[] = [
+		{value: '7', viewValue: '07:00'}
+	];
   constructor() {
-		for(let i = 7; i < 24; i++) {
-			this.horas[i-7] = {value: i, viewValue: i + ':00'}
-		}
+		
 	}
 
   ngOnInit() {
   }
+
+	getData(data:any){
+		console.log(data.value);
+	}
 
 }
