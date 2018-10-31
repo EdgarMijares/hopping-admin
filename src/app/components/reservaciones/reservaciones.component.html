@@ -1,15 +1,13 @@
 <h1 class="text-center">Reservaciones</h1>
 <div class="container animated fadeIn">
   <div class="row">
-    <i class="fa fa-home"></i>
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="col-6">
       <input matInput placeholder="Buscar" value="">
     </mat-form-field>
-    <mat-form-field class="example-full-width">
-    <span matPrefix>+1 &nbsp;</span>
-    <input type="tel" matInput placeholder="Telephone">
-    <mat-icon matSuffix>mode_edit</mat-icon>
-  </mat-form-field>
+    <hr>
+    <div class="col-12 col-md-6 text-right">
+      <h4>Fecha: {{'2018-05-10' | date:'dd/MM/yyyy'}}</h4>
+    </div>
 
     <div class="table-responsive">
       <table class="table">
