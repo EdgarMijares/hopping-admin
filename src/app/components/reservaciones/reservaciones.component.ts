@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ReservacionesService } from '../../services/reservaciones.service';
+
 @Component({
   selector: 'app-reservaciones',
   templateUrl: './reservaciones.component.html',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReservacionesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _reservacionesService: ReservacionesService) {
+    console.log(_reservacionesService)
+  }
 
   ngOnInit() {
   }

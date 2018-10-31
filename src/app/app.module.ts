@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 //MODULES
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -52,7 +55,9 @@ import { OpcionesComponent } from './components/opciones/opciones.component';
 		FormsModule,
 		ReactiveFormsModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    AngularFireModule.initializeApp(environment.firebase),
+ 	  AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
