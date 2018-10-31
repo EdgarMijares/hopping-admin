@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OpcionesComponent implements OnInit {
 
+  name:string = "Nombre compañia";
+  
   constructor() { }
 
   ngOnInit() {
