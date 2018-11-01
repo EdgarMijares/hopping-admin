@@ -9,8 +9,8 @@ import { ReservacionesService } from '../../services/reservaciones.service';
 })
 export class ReservacionesComponent implements OnInit {
 
-  constructor(private _reservacionesService: ReservacionesService) {
-    console.log(_reservacionesService)
+  constructor() {
+    // console.log(_reservacionesService)
   }
 
   ngOnInit() {
