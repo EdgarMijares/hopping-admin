@@ -1,8 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// SERVICES
+import { ReservacionesService } from './services/reservaciones.service';
 //MODULES
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2/fire';
+import { AngularFirestoreModule } from 'angularfire2/fire/firestore';
+import { environment } from '../environments/environment';
 
 // DISEÑO
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -50,9 +55,13 @@ import { OpcionesComponent } from './components/opciones/opciones.component';
 		MatSelectModule,
 		FormsModule,
 		ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+		AngularFireModule.initializeApp(environment.firebase),
+		AngularFirestoreModule
   ],
-  providers: [],
+  providers: [
+		ReservacionesService
+	],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
