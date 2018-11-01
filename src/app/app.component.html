@@ -1,12 +1,12 @@
 <mat-sidenav-container>
-	<mat-sidenav #sidenav mode="side" opened="true">
-		<div style="width: 300px"></div>
+	<mat-sidenav #sidenav mode="side" opened="false">
+		<div class="percent-menu"></div>
 		<app-menubar style="height: 100vh" ></app-menubar>
 	</mat-sidenav>
 	<mat-toolbar colgr="primary">
 		<i class="fa fa-bars" (click)="sidenav.toggle()"></i>
 	</mat-toolbar>
-	<div class="container" style="position:relative; min-height: 60vh;">
+	<div class="container" style="position:relative; min-height: calc(100vh - 225px);">
 		<router-outlet></router-outlet>
 	</div>
 	<app-footer></app-footer>

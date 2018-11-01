@@ -5,8 +5,8 @@ import { NgModule } from '@angular/core';
 import { ReservacionesService } from './services/reservaciones.service';
 //MODULES
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireModule } from 'angularfire2/fire';
-import { AngularFirestoreModule } from 'angularfire2/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 
 // DISEÑO

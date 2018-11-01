@@ -1,11 +1,16 @@
 import { Injectable } from '@angular/core';
+<<<<<<< HEAD
 import { Observable, of } from 'rxjs/';
 import { Reservaciones } from '../models/models';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument  } from 'angularfire2/firestore';
+=======
+import { Http, Headers } from '@angular/http';
+>>>>>>> e4b954cfa18449963ed703af40f8e9015874f0d8
 
 @Injectable({
   providedIn: 'root'
 })
+<<<<<<< HEAD
 
 export class ReservacionesService {
 	reservacionesColection: AngularFirestoreCollection<Reservaciones>;
@@ -26,6 +31,14 @@ export class ReservacionesService {
 
 	getReservaciones() {
 		return this.angularFirestore.collection('reservaciones').valueChanges();
+=======
+export class ReservacionesService {
+
+  private urlReservaciones = "https://hopping-dc414.firebaseio.com";
+
+  constructor(private http: Http, private headers: Headers) {
+    console.log(this.http.get(this.urlReservaciones))
+>>>>>>> e4b954cfa18449963ed703af40f8e9015874f0d8
   }
 
 
