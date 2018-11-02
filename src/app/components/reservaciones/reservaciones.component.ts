@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ReservacionesService } from '../../services/reservaciones.service';
 
+import { Reservaciones } from '../../models/models';
+
 @Component({
   selector: 'app-reservaciones',
   templateUrl: './reservaciones.component.html',
@@ -9,11 +11,13 @@ import { ReservacionesService } from '../../services/reservaciones.service';
 })
 export class ReservacionesComponent implements OnInit {
 
-  constructor() {
-    // console.log(_reservacionesService)
-  }
+	private reservaciones: Reservaciones[];
+  constructor(private _reservacionesService: ReservacionesService) { }
 
   ngOnInit() {
+		this._reservacionesService.getReservaciones().subscribe(reservaciones => {
+			this.reservaciones = reservaciones;
+		});
   }
 
 }

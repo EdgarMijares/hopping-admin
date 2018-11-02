@@ -20,13 +20,13 @@
             <th scope="col">STATUS</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let item of reservaciones">
           <tr>
             <!-- <th scope="row">20:00</th> -->
             <!-- <td>30/05/2018</td> -->
-            <td>Edgar Cipriano Mijares Cejas</td>
-            <td>5</td>
-            <td class="center"><mat-checkbox></mat-checkbox></td>
+            <td>{{ item.reservacion.nombre }}</td>
+            <td>{{ item.reservacion.no_personas }}</td>
+            <td class="center"><mat-checkbox value={{item.reservacion.status}}></mat-checkbox></td>
           </tr>
         </tbody>
       </table>
