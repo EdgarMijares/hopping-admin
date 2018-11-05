@@ -8,6 +8,8 @@ import { environment } from '../environments/environment';
 
 // SERVICES
 import { ReservacionesService } from './services/reservaciones.service';
+import { MyhopService } from './services/myhop.service';
+
 //MODULES
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -67,7 +69,8 @@ import { OpcionesComponent } from './components/opciones/opciones.component';
 		AngularFirestoreModule
   ],
   providers: [
-		ReservacionesService
+		ReservacionesService,
+    MyhopService
 	],
   bootstrap: [AppComponent]
 })

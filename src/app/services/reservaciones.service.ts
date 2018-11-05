@@ -4,8 +4,6 @@ import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/fir
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-// import { Http, Headers } from '@angular/http';
-
 import { Reservaciones } from '../models/models';
 
 @Injectable({
@@ -15,10 +13,8 @@ import { Reservaciones } from '../models/models';
 export class ReservacionesService {
 	reservacionesCollection: AngularFirestoreCollection<Reservaciones>;
 	reservaciones: Observable<any[]>;
-	// reservacionesDoc: AngularFirestoreDocument<Reservaciones>;
 
   constructor(private angularFirestore: AngularFirestore) {
-		// console.log(this.getCollection().)
 		this.reservacionesCollection = this.angularFirestore.collection<Reservaciones>('reservaciones');
 		this.reservaciones = this.reservacionesCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -28,7 +24,6 @@ export class ReservacionesService {
       }))
     );
 		this.reservaciones.subscribe(data => console.log(data));
-		console.log();
   }
 
 	getReservaciones() {

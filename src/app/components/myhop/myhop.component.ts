@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MyHopData } from '../../models/models';
+
+import { MyhopService } from '../../services/myhop.service';
 
 @Component({
   selector: 'app-myhop',
@@ -32,34 +35,33 @@ export class MyhopComponent implements OnInit {
     {value: '02', viewValue: '02:00'},
     {value: '03', viewValue: '03:00'}
 	];
-
-  constructor() {
-
+  private hopData:any[];
+  constructor(private _myhopService: MyhopService) {
+    this._myhopService.getHopData().subscribe(data => {
+      console.log(data)
+      this.hopData = data.myhop;
+    });
 	}
 
   ngOnInit() {
+    // console.log(this.hopData);
   }
 
-	getData(data:MiHopData) {
-    // data.value
-		console.log(data.domingo)
+  showList(item) {
+    console.log(item);
+  }
+
+	getData(data:MyHopData) {
+    console.log(data)
 	}
+
+  onClick(){
+    console.log(this.hopData)
+  }
 
 }
 
 export interface Hora {
   value: string;
   viewValue: string;
-}
-
-export interface MiHopData {
-  inicioHora: string;
-  inicioTermino: string;
-  lunes: boolean;
-  martes: boolean;
-  miercoles: boolean;
-  jueves: boolean;
-  viernes: boolean;
-  sabado: boolean;
-  domingo: boolean;
 }

@@ -9,6 +9,20 @@ export interface Reservaciones {
 	}
 }
 
+export interface MyHopData {
+  horaApertura: string;
+  horaCierre: string;
+  inicioHora: string;
+  inicioTermino: string;
+  lunes: boolean;
+  martes: boolean;
+  miercoles: boolean;
+  jueves: boolean;
+  viernes: boolean;
+  sabado: boolean;
+  domingo: boolean;
+}
+
 // export interface DocumentChangeAction {
 //   //'added' | 'modified' | 'removed';
 //   type: DocumentChangeType;
