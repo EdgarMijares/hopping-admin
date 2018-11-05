@@ -27,9 +27,12 @@ export class MyhopComponent implements OnInit {
     {value: '21', viewValue: '21:00'},
     {value: '22', viewValue: '22:00'},
     {value: '23', viewValue: '23:00'},
-    {value: '24', viewValue: '24:00'}
+    {value: '00', viewValue: '00:00'},
+    {value: '01', viewValue: '01:00'},
+    {value: '02', viewValue: '02:00'},
+    {value: '03', viewValue: '03:00'}
 	];
-	
+
   constructor() {
 
 	}

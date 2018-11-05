@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hopping-admin';
+	private menu: boolean = true;
+	constructor(){
+		if(document.body.clientWidth > 600){
+			this.menu = true;
+		} else {
+			this.menu = false;
+		}
+	}
 }

@@ -20,6 +20,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 //COMPONENTES
 import { AppRoutingModule } from './app-routing.module';
@@ -56,6 +58,8 @@ import { OpcionesComponent } from './components/opciones/opciones.component';
 		MatCheckboxModule,
 		MatRadioModule,
 		MatSelectModule,
+		MatIconModule,
+		MatButtonModule,
 		FormsModule,
 		ReactiveFormsModule,
     MatInputModule,
