@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-// import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // SERVICES
 import { ReservacionesService } from './services/reservaciones.service';
@@ -77,7 +77,7 @@ import { LoginComponent } from './components/login/login.component';
     MatButtonToggleModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
-    // AngularFireAuth
+    AngularFireAuthModule
   ],
   providers: [
 		ReservacionesService,

@@ -31,7 +31,7 @@
                 <a style="font-size: 13px;" href="#">Olvide la contraseña</a>
               </p>
               <div class="row">
-                <button mat-stroked-button color="accent" class="col-12">Ingresar <mat-icon>check</mat-icon></button>
+                <button mat-stroked-button color="accent" class="col-12" (click)="login()">Ingresar <mat-icon>check</mat-icon></button>
               </div>
               <br>
               <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="col-12">
@@ -78,7 +78,7 @@
               </div>
               <hr>
               <br>
-              <button mat-stroked-button color="accent" class="col-12">Registrar <mat-icon>save</mat-icon></button>
+              <button mat-stroked-button color="accent" class="col-12" (click)="createUser()">Registrar <mat-icon>save</mat-icon></button>
             </div>
           </mat-tab>
         </mat-tab-group>
