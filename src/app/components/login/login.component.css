@@ -32,8 +32,15 @@ input{
 .icon-input{
   margin-top: 15px;
 }
+
 .facebook{
+  color: #FFF;
   background: #3b5998;
+}
+
+.google {
+  color: #FFF;
+  background: #d62d20;
 }
 .image-size {
   max-width: 200px;

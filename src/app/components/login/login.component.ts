@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+// import { AngularFireAuth } from '@angular/fire/auth';
+// import { auth } from 'firebase/app';
+
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 
 import {FormControl, Validators} from '@angular/forms';
 // import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
@@ -25,6 +30,14 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+  //
+  // login() {
+  //   this._angularFireAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+  // }
+  //
+  // logout() {
+  //   this._angularFireAuth.auth.signOut();
+  // }
 
   getErrorMessage() {
     return this.email.hasError('required') ? 'Necesitas ingresar un corre' :

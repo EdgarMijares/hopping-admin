@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //FIREBASE
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
-// import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+// import { AngularFireAuth } from '@angular/fire/auth';
 
 // SERVICES
 import { ReservacionesService } from './services/reservaciones.service';
@@ -13,7 +15,6 @@ import { MyhopService } from './services/myhop.service';
 
 //MODULES
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 
 // DISEÑO
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -57,6 +58,8 @@ import { LoginComponent } from './components/login/login.component';
     LoginComponent
   ],
   imports: [
+    HttpModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
 		MatToolbarModule,
