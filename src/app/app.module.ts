@@ -26,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 //COMPONENTES
 import { AppRoutingModule } from './app-routing.module';
@@ -70,6 +71,7 @@ import { LoginComponent } from './components/login/login.component';
 		ReactiveFormsModule,
     MatInputModule,
     MatTabsModule,
+    MatButtonToggleModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
     // AngularFireAuth

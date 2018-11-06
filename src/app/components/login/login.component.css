@@ -8,15 +8,22 @@
   height: 100vh;
 }
 
+img {
+  display: block;
+  margin: auto;
+}
+
 .container-form {
-  background: #FFF;
+  background: #eee;
+  max-width: 400px;
+  border-radius: 5px;
 }
 
 .padding-login {
   padding: 20px;
 }
 input{
-  color: #FFF;
+  /* color: #FFF; */
 }
 
 .tab-icon {
@@ -24,4 +31,14 @@ input{
 }
 .icon-input{
   margin-top: 15px;
+}
+.facebook{
+  background: #3b5998;
+}
+.image-size {
+  max-width: 200px;
+}
+
+.padding-top {
+  padding-top: 30px;
 }
