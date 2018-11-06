@@ -2,9 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 //FIREBASE
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
+import { AngularFireModule } from '@angular/fire';
+// import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 // SERVICES
 import { ReservacionesService } from './services/reservaciones.service';
@@ -24,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
 
 //COMPONENTES
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +39,7 @@ import { PromocionesComponent } from './components/promociones/promociones.compo
 import { GaleriaComponent } from './components/galeria/galeria.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { OpcionesComponent } from './components/opciones/opciones.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { OpcionesComponent } from './components/opciones/opciones.component';
     PromocionesComponent,
     GaleriaComponent,
     FeedComponent,
-    OpcionesComponent
+    OpcionesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -65,8 +69,10 @@ import { OpcionesComponent } from './components/opciones/opciones.component';
 		FormsModule,
 		ReactiveFormsModule,
     MatInputModule,
+    MatTabsModule,
 		AngularFireModule.initializeApp(environment.firebase),
-		AngularFirestoreModule
+		AngularFirestoreModule,
+    // AngularFireAuth
   ],
   providers: [
 		ReservacionesService,

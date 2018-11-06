@@ -10,17 +10,28 @@ export interface Reservaciones {
 }
 
 export interface MyHopData {
-  horaApertura: string;
+	horaApertura: string;
   horaCierre: string;
   inicioHora: string;
   inicioTermino: string;
-  lunes: boolean;
-  martes: boolean;
-  miercoles: boolean;
-  jueves: boolean;
-  viernes: boolean;
-  sabado: boolean;
-  domingo: boolean;
+	sercio: {
+		lunesServicio: boolean;
+	  martesServicio: boolean;
+	  miercolesServicio: boolean;
+	  juevesServicio: boolean;
+	  viernesServicio: boolean;
+	  sabadoServicio: boolean;
+	  domingoServicio: boolean;
+	}
+	reservacion: {
+		lunesReservacion: boolean;
+	  martesReservacion: boolean;
+	  miercolesReservacion: boolean;
+	  juevesReservacion: boolean;
+	  viernesReservacion: boolean;
+	  sabadoReservacion: boolean;
+	  domingoReservacion: boolean;
+	}
 }
 
 // export interface DocumentChangeAction {

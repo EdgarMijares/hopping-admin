@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.bg-login {
+  background-color: #000;
+  height: 100vh;
+}
+
+.container-form {
+  background: #FFF;
+}
+
+.padding-login {
+  padding: 20px;
+}
+input{
+  color: #FFF;
+}
+
+.tab-icon {
+  margin-right: 8px;
+}
+.icon-input{
+  margin-top: 15px;
+}

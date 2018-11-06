@@ -1,0 +1,82 @@
+<div class="bg-login">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-6">
+      <div class="container-form">
+        <mat-tab-group>
+          <mat-tab class="row justify-content-center">
+            <ng-template mat-tab-label>
+              <mat-icon class="tab-icon">verified_user</mat-icon>Ingresar
+            </ng-template>
+            <div class="padding-login">
+              <div class="center-profile">
+    						<img class="img-responsive center-block"
+                     src="/assets/hopping/imagotipo_hopping.png" width="50%" alt="Avatar">
+    					</div>
+              <br>
+              <div class="row">
+                <mat-icon class="icon-input col-1">person</mat-icon>
+                <mat-form-field color="accent" class="col-11">
+                  <input matInput placeholder="Usuario" color="accent">
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-icon class="icon-input col-1">lock</mat-icon>
+                <mat-form-field color="accent" class="col-11">
+                  <input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'">
+                  <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </mat-form-field>
+              </div>
+              <hr>
+              <p class="text-right">
+                <a style="font-size: 13px;" href="#">Olvide la contraseña</a>
+              </p>
+              <div class="row">
+                <button mat-stroked-button color="accent" class="col-12">Ingresar <mat-icon>check</mat-icon></button>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab>
+            <ng-template mat-tab-label>
+              <mat-icon class="tab-icon">how_to_reg</mat-icon>Registrar
+            </ng-template>
+            <div class="padding-login">
+              <div class="row">
+                <mat-form-field color="accent" class="col-12">
+                  <input matInput placeholder="Nombre(s)" color="accent">
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <input matInput placeholder="Email" [formControl]="emailFormControl"
+                       [errorStateMatcher]="matcher">
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                  Ingresa un email valido
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                  El email es <strong>obligatorio</strong>
+                </mat-error>
+              </div>
+              <div class="row">
+                <mat-form-field color="accent" class="col-12">
+                  <input matInput placeholder="Usuario" color="accent">
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field color="accent" class="col-12">
+                  <input matInput placeholder="Contraseña">
+                </mat-form-field>
+              </div>
+              <div class="row">
+                <mat-form-field color="accent" class="col-12">
+                  <input matInput placeholder="Repetir contraseña">
+                </mat-form-field>
+              </div>
+              <button mat-stroked-button color="accent" class="col-12">Registrar <mat-icon>save</mat-icon></button>
+            </div>
+          </mat-tab>
+
+        </mat-tab-group>
+    </div>
+    </div>
+  </div>
+</div>
