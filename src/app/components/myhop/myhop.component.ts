@@ -39,7 +39,7 @@ export class MyhopComponent implements OnInit {
   constructor(private _myhopService: MyhopService) {
     this._myhopService.getHopData().subscribe(data => {
       console.log(data)
-      this.hopData = data.myhop;
+      this.hopData = data;
     });
 	}
 

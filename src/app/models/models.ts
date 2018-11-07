@@ -23,6 +23,9 @@ export interface MyHopData {
   domingo: boolean;
 }
 
+export interface HopZone {
+    
+}
 // export interface DocumentChangeAction {
 //   //'added' | 'modified' | 'removed';
 //   type: DocumentChangeType;
