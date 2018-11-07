@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //FIREBASE
+import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // SERVICES
 import { ReservacionesService } from './services/reservaciones.service';
@@ -12,7 +15,6 @@ import { MyhopService } from './services/myhop.service';
 
 //MODULES
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 
 // DISEÑO
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,6 +26,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
 //COMPONENTES
 import { AppRoutingModule } from './app-routing.module';
@@ -37,6 +41,7 @@ import { PromocionesComponent } from './components/promociones/promociones.compo
 import { GaleriaComponent } from './components/galeria/galeria.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { OpcionesComponent } from './components/opciones/opciones.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -49,9 +54,12 @@ import { OpcionesComponent } from './components/opciones/opciones.component';
     PromocionesComponent,
     GaleriaComponent,
     FeedComponent,
-    OpcionesComponent
+    OpcionesComponent,
+    LoginComponent
   ],
   imports: [
+    HttpModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
 		MatToolbarModule,
@@ -65,8 +73,11 @@ import { OpcionesComponent } from './components/opciones/opciones.component';
 		FormsModule,
 		ReactiveFormsModule,
     MatInputModule,
+    MatTabsModule,
+    MatButtonToggleModule,
 		AngularFireModule.initializeApp(environment.firebase),
-		AngularFirestoreModule
+		AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [
 		ReservacionesService,
