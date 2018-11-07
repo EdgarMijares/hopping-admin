@@ -3,14 +3,20 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private _angularFireAuth: AngularFireAuth) { }
+	user: Observable<firebase.User>;
 
-	signUp(email: string, password: string) {
+  constructor(private _angularFireAuth: AngularFireAuth) {
+		console.log(_angularFireAuth.user);
+		this.getStatusLogin();
+	}
+
+	signUpEmail(email: string, password: string) {
 		this._angularFireAuth.auth
 			.createUserWithEmailAndPassword(email, password)
 			.then(info => {
@@ -21,7 +27,7 @@ export class AuthService {
 			})
 	}
 
-	logIn(email:string, password: string) {
+	logInEmail(email:string, password: string) {
     this._angularFireAuth.auth
 			.signInWithEmailAndPassword(email, password)
 			.then(info => {
@@ -31,23 +37,32 @@ export class AuthService {
 				console.log('LOGIN', error);
 			}
 		);
+		console.log("CURREN", this._angularFireAuth.auth.currentUser);
+		console.log("USER", this._angularFireAuth.user);
+
   }
 
   logOut() {
     this._angularFireAuth.auth.signOut()
 			.then(value => {
-				console.log('LOGIN', value);
+				console.log('LOGOUT', value);
 			})
 			.catch(error => {
-				console.log('LOGIN', error);
+				console.log('LOGOUT', error);
 			}
 		);
   }
 
-  createUser() {
-    this._angularFireAuth.auth.createUserWithEmailAndPassword("test@text.com", "123456").catch(
-      data => console.log(data)
-    );
-  }
+	getStatusLogin() {
+		this._angularFireAuth.auth.onAuthStateChanged(user => {
+			if(user) {
+				console.log(user);
+				return true;
+			} else {
+				return false;
+				console.log(user)
+			}
+		})
+	}
 
 }

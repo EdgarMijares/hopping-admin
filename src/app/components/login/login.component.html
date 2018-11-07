@@ -30,11 +30,11 @@
               <a style="font-size: 13px;" href="#">Olvide la contraseña</a>
             </p>
             <div class="row">
-              <button mat-stroked-button color="accent" class="col-12" (click)="login()">Ingresar <mat-icon>check</mat-icon></button>
+              <button mat-stroked-button color="accent" class="col-12" (click)="_authService.logInEmail('test@text.com', '123456')">Ingresar <mat-icon>check</mat-icon></button>
             </div>
 						<div class="row margin-top-10">
 							<mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="col-12">
-								<mat-button-toggle class="col-6 facebook" value="bold"><i class="fa fa-facebook"></i></mat-button-toggle>
+								<mat-button-toggle (click)="_authService.logOut()" class="col-6 facebook" value="bold"><i class="fa fa-facebook"></i></mat-button-toggle>
 								<mat-button-toggle class="col-6 google" value="italic"><i class="fa fa-google"></i></mat-button-toggle>
 							</mat-button-toggle-group>
 						</div>
