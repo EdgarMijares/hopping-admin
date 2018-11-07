@@ -43,9 +43,7 @@ export class MyhopComponent implements OnInit {
     });
 	}
 
-  ngOnInit() {
-    // console.log(this.hopData);
-  }
+  ngOnInit() { }
 
   showList(item) {
     // this.weekReservacion.push(item);
@@ -58,7 +56,6 @@ export class MyhopComponent implements OnInit {
   onClick(){
     console.log(this.hopData)
   }
-
 }
 
 export interface Hora {

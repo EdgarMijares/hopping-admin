@@ -54,15 +54,14 @@ export class AuthService {
   }
 
 	getStatusLogin() {
+		let flag = false;
 		this._angularFireAuth.auth.onAuthStateChanged(user => {
 			if(user) {
+				flag = true;
 				console.log(user);
-				return true;
-			} else {
-				return false;
-				console.log(user)
 			}
 		})
+		return flag;
 	}
 
 }

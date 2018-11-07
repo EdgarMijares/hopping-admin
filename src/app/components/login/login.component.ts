@@ -21,14 +21,4 @@ export class LoginComponent implements OnInit {
         this.email.hasError('email') ? 'No es un correo valido' :
             '';
   }
-
-
-  //
-  // emailFormControl = new FormControl('', [
-  //   Validators.required,
-  //   Validators.email,
-  // ]);
-  //
-  // matcher = new MyErrorStateMatcher();
-
 }

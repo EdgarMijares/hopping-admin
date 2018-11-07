@@ -16,8 +16,6 @@ export class MyhopService {
 
   constructor(private angularFirestore: AngularFirestore) {
     this.myHopCollection = this.angularFirestore.collection<any>('lugares').doc('HOB1ZONE').collection('locales');
-    // this.test = this.myHopCollection.doc('HOB1ZONE1');
-    // this.test.subscribe(data => console.log(data))
     this.myHop = this.myHopCollection.stateChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as any;
@@ -25,13 +23,6 @@ export class MyhopService {
         return { id, ...data };
       }))
     )
-		// this.myHop = this.myHopCollection.snapshotChanges().pipe(
-    //   map(actions => actions.map(a => {
-    //     const data = a.payload.doc.data() as any;
-    //     const id = a.payload.doc.id;
-    //     return { id, ...data } ;
-    //   }))
-    // );
   }
 
   getHopData() {

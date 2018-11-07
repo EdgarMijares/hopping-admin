@@ -1,5 +1,5 @@
-<app-login *ngIf="(_authService.getStatusLogin() | async)"></app-login>
-<mat-sidenav-container *ngIf="!(_authService.getStatusLogin() | async)">
+<app-login *ngIf="(_authService.user | async)"></app-login>
+<mat-sidenav-container *ngIf="!(_authService.user | async)">
 	<mat-sidenav #sidenav mode="side" [opened]="menu">
 		<div class="percent-menu"></div>
 		<app-menubar style="height: 100vh"></app-menubar>

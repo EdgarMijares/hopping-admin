@@ -7,13 +7,15 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'hopping-admin';
+
 	private menu: boolean = true;
+
 	constructor(private _authService: AuthService){
 		if(document.body.clientWidth > 600){
 			this.menu = true;
 		} else {
 			this.menu = false;
 		}
+		console.log(this._authService.getStatusLogin());
 	}
 }
