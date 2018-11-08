@@ -16,6 +16,5 @@ export class AppComponent {
 		} else {
 			this.menu = false;
 		}
-		console.log(this._authService.getStatusLogin());
 	}
 }

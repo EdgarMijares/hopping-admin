@@ -12,7 +12,6 @@ export class AuthService {
 	user: Observable<firebase.User>;
 
   constructor(private _angularFireAuth: AngularFireAuth) {
-		console.log(_angularFireAuth.user);
 		this.getStatusLogin();
 	}
 
@@ -58,7 +57,6 @@ export class AuthService {
 		this._angularFireAuth.auth.onAuthStateChanged(user => {
 			if(user) {
 				flag = true;
-				console.log(user);
 			}
 		})
 		return flag;

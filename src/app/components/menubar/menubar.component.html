@@ -25,6 +25,9 @@
             <li routerLinkActive="active">
               <i class="fa fa-ellipsis-h"></i><a [routerLink]="['opciones']">Opciones</a>
             </li>
+            <li (click)="_authService.logOut()">
+              <i class="fa fa-exit"></i><a>Salir</a>
+            </li>
         </ul>
     </aside>
 </div>

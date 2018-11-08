@@ -11,15 +11,14 @@ import { FeedComponent } from './components/feed/feed.component';
 import { OpcionesComponent } from './components/opciones/opciones.component';
 
 const routes: Routes = [
-	{path: "signin", component: LoginComponent},
-	{path: "myhob", component: MyhopComponent},
+	{path: "myhop", component: MyhopComponent},
 	{path: "detalles", component: DetallesComponent},
 	{path: "reservaciones", component: ReservacionesComponent},
 	{path: "promociones", component: PromocionesComponent},
 	{path: "galeria", component: GaleriaComponent},
 	{path: "feed", component: FeedComponent},
 	{path: "opciones", component: OpcionesComponent},
-	{path: '**', pathMatch: 'full', redirectTo: 'signin'}
+	{path: '**', pathMatch: 'full', redirectTo: 'myhop'}
 ];
 
 @NgModule({

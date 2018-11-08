@@ -35,10 +35,10 @@ export class MyhopComponent implements OnInit {
     {value: '02', viewValue: '02:00'},
     {value: '03', viewValue: '03:00'}
 	];
-  private hopData:any[];
+  private hopData:MyHopData[];
+
   constructor(private _myhopService: MyhopService) {
     this._myhopService.getHopData().subscribe(data => {
-      console.log(data)
       this.hopData = data;
     });
 	}
@@ -50,11 +50,11 @@ export class MyhopComponent implements OnInit {
   }
 
 	getData(data:MyHopData) {
-    console.log(data)
+    // console.log(data)
 	}
 
   onClick(){
-    console.log(this.hopData)
+    // console.log(this.hopData)
   }
 }
 
