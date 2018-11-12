@@ -11,8 +11,10 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
 	user: Observable<firebase.User>;
+	status: any;
 
   constructor(private _angularFireAuth: AngularFireAuth, private router: Router) {
+		// this.status = ( != null)? true: false;
 		this.getStatusLogin();
 	}
 
@@ -87,14 +89,24 @@ export class AuthService {
     // return new Promice<any>((resolve,reject) => {
     //   this._angularFireAuth.onAuthStateChanged(user )
     // });
-		let flag = false;
-		this._angularFireAuth.auth.onAuthStateChanged(user => {
-			if(user) {
-				flag = true;
-        this.router.navigate['/myhop'];
+		this._angularFireAuth.authState.subscribe(stat => {
+			console.log(stat);
+			if(stat != null) {
+				this.router.navigate(['/myhop']);
+				return true;
+			} else {
+				this.router.navigate(['/']);
+				return false;
 			}
-		})
-		return flag;
+		});
+		// let flag = false;
+		// this._angularFireAuth.auth.onAuthStateChanged(user => {
+		// 	if(user) {
+		// 		flag = true;
+    //     this.router.navigate['/myhop'];
+		// 	}
+		// })
+		// return flag;
 	}
 
 }

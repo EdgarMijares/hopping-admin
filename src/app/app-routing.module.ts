@@ -19,7 +19,7 @@ const routes: Routes = [
 	{path: 'galeria', component: GaleriaComponent},
 	{path: 'feed', component: FeedComponent},
 	{path: 'opciones', component: OpcionesComponent},
-	{path: '',   redirectTo: '/myhop', pathMatch: 'full'},
+	{path: '',   redirectTo: '/', pathMatch: 'full'},
 	// {path: '**', pathMatch: 'full', redirectTo: ''}
 ];
 

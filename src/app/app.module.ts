@@ -30,8 +30,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-//COMPONENTES
+// ROUTES
 import { AppRoutingModule } from './app-routing.module';
+
+//COMPONENTES
 import { AppComponent } from './app.component';
 import { MenubarComponent } from './components/menubar/menubar.component';
 import { MyhopComponent } from './components/myhop/myhop.component';
@@ -43,6 +45,7 @@ import { GaleriaComponent } from './components/galeria/galeria.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { OpcionesComponent } from './components/opciones/opciones.component';
 import { LoginComponent } from './components/login/login.component';
+import { ContenedorComponent } from './components/contenedor/contenedor.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,8 @@ import { LoginComponent } from './components/login/login.component';
     GaleriaComponent,
     FeedComponent,
     OpcionesComponent,
-    LoginComponent
+    LoginComponent,
+    ContenedorComponent
   ],
   imports: [
     HttpModule,

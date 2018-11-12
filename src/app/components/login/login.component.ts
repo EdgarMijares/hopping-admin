@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   email = new FormControl('', [Validators.required, Validators.email]);
+	status: any;
 
   constructor(private _authService: AuthService, private router: Router) { }
 
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
     //     this.router.navigate['myhop'];
     //   }
     // }, 2000 );
+		// console.log(this.status);
   }
 
   logInUser(user) {
