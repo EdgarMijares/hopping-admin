@@ -12,7 +12,8 @@ export class MyhopComponent implements OnInit {
 
 	weekServicio:string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
   weekReservacion:Array<any> = ['','','','','','',''];
-	horas: Hora[] = [
+
+  horas: Hora[] = [
 		{value: '7', viewValue: '07:00'},
     {value: '8', viewValue: '08:00'},
     {value: '9', viewValue: '09:00'},
@@ -35,11 +36,13 @@ export class MyhopComponent implements OnInit {
     {value: '02', viewValue: '02:00'},
     {value: '03', viewValue: '03:00'}
 	];
+
   private hopData:MyHopData[];
 
   constructor(private _myhopService: MyhopService) {
     this._myhopService.getHopData().subscribe(data => {
       this.hopData = data;
+      console.log(data)
     });
 	}
 

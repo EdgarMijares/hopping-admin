@@ -1,3 +1,7 @@
+export interface User {
+	email: string;
+	password: string;
+}
 export interface Reservaciones {
 	id:string;
 	reservacion:{
@@ -35,7 +39,7 @@ export interface MyHopData {
 }
 
 export interface HopZone {
-    
+
 }
 // export interface DocumentChangeAction {
 //   //'added' | 'modified' | 'removed';

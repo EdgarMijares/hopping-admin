@@ -15,7 +15,7 @@ export class MyhopService {
   test:any;
 
   constructor(private angularFirestore: AngularFirestore) {
-    this.myHopCollection = this.angularFirestore.collection<any>('lugares').doc('HOB1ZONE').collection('locales');
+    this.myHopCollection = this.angularFirestore.collection<any>('myhop');
     this.myHop = this.myHopCollection.stateChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as any;

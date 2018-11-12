@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
+import * as firebase from 'firebase/app';
+import { Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
 @Injectable({
@@ -11,7 +12,7 @@ export class AuthService {
 
 	user: Observable<firebase.User>;
 
-  constructor(private _angularFireAuth: AngularFireAuth) {
+  constructor(private _angularFireAuth: AngularFireAuth, private router: Router) {
 		this.getStatusLogin();
 	}
 
@@ -36,14 +37,44 @@ export class AuthService {
 				console.log('LOGIN', error);
 			}
 		);
-		console.log("CURREN", this._angularFireAuth.auth.currentUser);
-		console.log("USER", this._angularFireAuth.user);
+  }
 
+  logInFacebook(){
+    return new Promise<any>((resolve, reject) => {
+      let provider = new firebase.auth.FacebookAuthProvider();
+      this._angularFireAuth.auth
+      .signInWithPopup(provider)
+      .then(res => {
+        console.log(res);
+        resolve(res);
+      }, err => {
+        console.log(err);
+        reject(err);
+      })
+    });
+  }
+
+  logInGoogle() {
+    return new Promise<any>((resolve, reject) => {
+    let provider = new firebase.auth.GoogleAuthProvider();
+      provider.addScope('profile');
+      provider.addScope('email');
+      this._angularFireAuth.auth
+      .signInWithPopup(provider)
+      .then(res => {
+        console.log(res);
+        resolve(res);
+      }, err => {
+        console.log(err);
+        reject(err);
+      })
+    });
   }
 
   logOut() {
     this._angularFireAuth.auth.signOut()
 			.then(value => {
+        this.router.navigate['']
 				console.log('LOGOUT', value);
 			})
 			.catch(error => {
@@ -53,10 +84,14 @@ export class AuthService {
   }
 
 	getStatusLogin() {
+    // return new Promice<any>((resolve,reject) => {
+    //   this._angularFireAuth.onAuthStateChanged(user )
+    // });
 		let flag = false;
 		this._angularFireAuth.auth.onAuthStateChanged(user => {
 			if(user) {
 				flag = true;
+        this.router.navigate['/myhop'];
 			}
 		})
 		return flag;

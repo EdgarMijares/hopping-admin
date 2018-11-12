@@ -13,8 +13,6 @@
       <table class="table">
         <thead>
           <tr>
-            <!-- <th scope="col">HORA</th>
-            <th scope="col">FECHA</th> -->
             <th class="text-center" scope="col">NOMBRE</th>
             <th class="text-center" scope="col">PERSONAS</th>
             <th class="text-center" scope="col">STATUS</th>
@@ -22,12 +20,11 @@
         </thead>
         <tbody *ngFor="let item of reservaciones">
           <tr>
-            <!-- <th scope="row">20:00</th> -->
-            <!-- <td>30/05/2018</td> -->
             <td>{{ item.reservacion.nombre }}</td>
             <td class="text-center">{{ item.reservacion.no_personas }}</td>
             <td class="text-center">
-							<mat-checkbox [ngModel]="item.reservacion.status" style="padding-top:5px"></mat-checkbox>
+              <button mat-button color="accent" *ngIf="!item.reservacion.status">Aceptar</button>
+              <button mat-button color="accent" disabled *ngIf="item.reservacion.status">Aceptado</button>
 						</td>
           </tr>
         </tbody>
