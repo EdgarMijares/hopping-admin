@@ -13,7 +13,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 // SERVICES
 import { ReservacionesService } from './services/reservaciones.service';
 import { MyhopService } from './services/myhop.service';
-
+import { DialogsService } from './services/dialogs.service';
 //MODULES
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -29,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
 
 // ROUTES
 import { AppRoutingModule } from './app-routing.module';
@@ -46,6 +47,8 @@ import { FeedComponent } from './components/feed/feed.component';
 import { OpcionesComponent } from './components/opciones/opciones.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContenedorComponent } from './components/contenedor/contenedor.component';
+import { AcuerdoComponent } from './dialog/acuerdo/acuerdo.component';
+import { NormalComponent } from './dialog/normal/normal.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,9 @@ import { ContenedorComponent } from './components/contenedor/contenedor.componen
     FeedComponent,
     OpcionesComponent,
     LoginComponent,
-    ContenedorComponent
+    ContenedorComponent,
+    AcuerdoComponent,
+    NormalComponent
   ],
   imports: [
     HttpModule,
@@ -80,14 +85,23 @@ import { ContenedorComponent } from './components/contenedor/contenedor.componen
     MatInputModule,
     MatTabsModule,
     MatButtonToggleModule,
+		MatDialogModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
     // AngularFireStorageModule,
     AngularFireAuthModule
   ],
+	entryComponents: [
+		AcuerdoComponent,
+		NormalComponent
+	],
   providers: [
+		//SERVICES
 		ReservacionesService,
-    MyhopService
+    MyhopService,
+		DialogsService
+		//DIALOGS
+		// AcuerdoComponent
 	],
   bootstrap: [AppComponent]
 })
