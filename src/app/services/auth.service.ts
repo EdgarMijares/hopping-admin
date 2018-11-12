@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore  } from '@angular/fire/firestore';
+
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 
@@ -12,11 +14,13 @@ export class AuthService {
 
 	user: Observable<firebase.User>;
 
-  constructor(private _angularFireAuth: AngularFireAuth, private router: Router) {
+  constructor(private _angularFireAuth: AngularFireAuth,
+    private _angularFirestore: AngularFirestore,
+    private router: Router) {
 		this.getStatusLogin();
 	}
 
-	signUpEmail(email: string, password: string) {
+	createUserEmail(email: string, password: string) {
 		this._angularFireAuth.auth
 			.createUserWithEmailAndPassword(email, password)
 			.then(info => {
@@ -26,6 +30,17 @@ export class AuthService {
 				console.log('SIGNUP', error);
 			})
 	}
+
+  signUpEmail(email: string, password: string) {
+    this._angularFireAuth.auth
+      .signInWithEmailAndPassword(email, password)
+      .then(info => {
+        console.log('SIGNUP', info);
+      })
+      .catch(error => {
+        console.log('SIGNUP', error);
+      })
+  }
 
 	logInEmail(email:string, password: string) {
     this._angularFireAuth.auth
@@ -44,29 +59,27 @@ export class AuthService {
       let provider = new firebase.auth.FacebookAuthProvider();
       this._angularFireAuth.auth
       .signInWithPopup(provider)
-      .then(res => {
-        console.log(res);
-        resolve(res);
-      }, err => {
-        console.log(err);
-        reject(err);
+        .then(res => {
+          this.saveUser(res.user.uid, res.additionalUserInfo.profile);
+          resolve(res);
+        }, err => {
+          console.log(err);
+          reject(err);
       })
     });
   }
 
   logInGoogle() {
     return new Promise<any>((resolve, reject) => {
-    let provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope('profile');
-      provider.addScope('email');
+      let provider = new firebase.auth.GoogleAuthProvider();
       this._angularFireAuth.auth
       .signInWithPopup(provider)
-      .then(res => {
-        console.log(res);
-        resolve(res);
-      }, err => {
-        console.log(err);
-        reject(err);
+        .then(res => {
+          this.saveUser(res.user.uid, res.additionalUserInfo.profile);
+          resolve(res);
+        }, err => {
+          console.log(err);
+          reject(err);
       })
     });
   }
@@ -84,9 +97,6 @@ export class AuthService {
   }
 
 	getStatusLogin() {
-    // return new Promice<any>((resolve,reject) => {
-    //   this._angularFireAuth.onAuthStateChanged(user )
-    // });
 		let flag = false;
 		this._angularFireAuth.auth.onAuthStateChanged(user => {
 			if(user) {
@@ -96,5 +106,11 @@ export class AuthService {
 		})
 		return flag;
 	}
+
+  saveUser(id:string, user:any) {
+    this._angularFirestore.collection('users').doc(id).set(user)
+      .then(status => console.log(status))
+      .catch(error => console.log(error));
+  }
 
 }
