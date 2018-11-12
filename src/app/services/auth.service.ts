@@ -13,19 +13,21 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
 	user: Observable<firebase.User>;
-	status: any;
+	status: boolean;
 
   constructor(private _angularFireAuth: AngularFireAuth,
     private _angularFirestore: AngularFirestore,
     private router: Router) {
-		this.getStatusLogin();
+			this.user = this._angularFireAuth.authState;
+			this.user.subscribe(data => {(data != null)? this.router.navigate(['myhop']): this.router.navigate(['/'])})
 	}
 
-	createUserEmail(email: string, password: string) {
+	createUserEmail(email: string, password: string, user:any) {
 		this._angularFireAuth.auth
 			.createUserWithEmailAndPassword(email, password)
 			.then(info => {
-				console.log('SIGNUP', info);
+				this.saveUser(info.user.uid, user);
+				this.router.navigate(['opciones']);
 			})
 			.catch(error => {
 				console.log('SIGNUP', error);
@@ -35,9 +37,9 @@ export class AuthService {
   signUpEmail(email: string, password: string) {
     this._angularFireAuth.auth
       .signInWithEmailAndPassword(email, password)
-      .then(info => {
-        console.log('SIGNUP', info);
-      })
+      .then(() => {
+				this.router.navigate(['myhop']);
+			})
       .catch(error => {
         console.log('SIGNUP', error);
       })
@@ -46,8 +48,8 @@ export class AuthService {
 	logInEmail(email:string, password: string) {
     this._angularFireAuth.auth
 			.signInWithEmailAndPassword(email, password)
-			.then(info => {
-				console.log('LOGIN', info);
+			.then(() => {
+				this.router.navigate(['myhop']);
 			})
 			.catch(error => {
 				console.log('LOGIN', error);
@@ -64,7 +66,6 @@ export class AuthService {
           this.saveUser(res.user.uid, res.additionalUserInfo.profile);
           resolve(res);
         }, err => {
-          console.log(err);
           reject(err);
       })
     });
@@ -79,7 +80,6 @@ export class AuthService {
           this.saveUser(res.user.uid, res.additionalUserInfo.profile);
           resolve(res);
         }, err => {
-          console.log(err);
           reject(err);
       })
     });
@@ -87,9 +87,8 @@ export class AuthService {
 
   logOut() {
     this._angularFireAuth.auth.signOut()
-			.then(value => {
-        this.router.navigate['']
-				console.log('LOGOUT', value);
+			.then(() => {
+        this.router.navigate(['/']);
 			})
 			.catch(error => {
 				console.log('LOGOUT', error);
@@ -98,40 +97,18 @@ export class AuthService {
   }
 
 	getStatusLogin() {
-<<<<<<< HEAD
-    // return new Promice<any>((resolve,reject) => {
-    //   this._angularFireAuth.onAuthStateChanged(user )
-    // });
 		this._angularFireAuth.authState.subscribe(stat => {
-			console.log(stat);
 			if(stat != null) {
 				this.router.navigate(['/myhop']);
-				return true;
 			} else {
 				this.router.navigate(['/']);
-				return false;
-=======
-		let flag = false;
-		this._angularFireAuth.auth.onAuthStateChanged(user => {
-			if(user) {
-				flag = true;
-        this.router.navigate['/myhop'];
->>>>>>> 6066c9aadd30e7bef3795f2a43c0bd9c4a794c53
 			}
 		});
-		// let flag = false;
-		// this._angularFireAuth.auth.onAuthStateChanged(user => {
-		// 	if(user) {
-		// 		flag = true;
-    //     this.router.navigate['/myhop'];
-		// 	}
-		// })
-		// return flag;
 	}
 
   saveUser(id:string, user:any) {
     this._angularFirestore.collection('users').doc(id).set(user)
-      .then(status => console.log(status))
+      // .then(status => console.log(status))
       .catch(error => console.log(error));
   }
 
