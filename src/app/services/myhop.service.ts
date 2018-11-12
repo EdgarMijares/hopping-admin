@@ -4,8 +4,6 @@ import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/fir
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { MyHopData } from '../models/models';
-
 @Injectable({
   providedIn: 'root'
 })
