@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class MenubarComponent implements OnInit {
 	showFiller = false;
-  constructor(private _authService: AuthService ) { }
+  constructor( private _authService: AuthService ) { }
 
   ngOnInit() {
   }

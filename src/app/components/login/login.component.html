@@ -6,33 +6,34 @@
           <ng-template mat-tab-label>
             <mat-icon class="tab-icon">verified_user</mat-icon>Ingresar
           </ng-template>
-            <form (ngSubmit)="logInUser(objeto.value)" #objeto="ngForm" novalidate="" class="animated fadeIn">
               <div class="padding-login">
                 <div class="center-profile">
                   <img class="img-responsive center-block image-size"
                   src="/assets/hopping/imagotipo_hopping.png" alt="Avatar">
                 </div>
                 <br>
-                <div class="row">
-                  <mat-icon class="icon-input col-2">person</mat-icon>
-                  <mat-form-field color="accent" class="col-9">
-                    <input matInput placeholder="Usuario" color="accent" name="user" ngModel>
-                  </mat-form-field>
-                </div>
-                <div class="row">
-                  <mat-icon class="icon-input col-2">lock</mat-icon>
-                  <mat-form-field color="accent" class="col-9">
-                    <input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'" name="password" ngModel>
-                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                  </mat-form-field>
-                </div>
-                <hr>
-                <p class="text-right">
-                  <a style="font-size: 13px;" href="#">Olvide la contraseña</a>
-                </p>
-                <div class="row">
-                  <button mat-stroked-button color="accent" class="col-12">Ingresar <mat-icon>check</mat-icon></button>
-                </div>
+								<form (ngSubmit)="logInUser(login.value)" #login="ngForm" class="animated fadeIn">
+	                <div class="row">
+	                  <mat-icon class="icon-input col-2">person</mat-icon>
+	                  <mat-form-field color="accent" class="col-9">
+	                    <input matInput placeholder="Correo de usuario" color="accent" name="user" ngModel>
+	                  </mat-form-field>
+	                </div>
+	                <div class="row">
+	                  <mat-icon class="icon-input col-2">lock</mat-icon>
+	                  <mat-form-field color="accent" class="col-9">
+	                    <input matInput placeholder="Contraseña" [type]="hide ? 'password' : 'text'" name="password" ngModel>
+	                    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+	                  </mat-form-field>
+	                </div>
+	                <hr>
+	                <p class="text-right">
+	                  <a style="font-size: 13px;" href="#">Olvide la contraseña</a>
+	                </p>
+	                <div class="row">
+	                  <button mat-stroked-button color="accent" class="col-12">Ingresar <mat-icon>check</mat-icon></button>
+	                </div>
+								</form>
                 <div class="row margin-top-10">
                   <mat-button-toggle-group name="fontStyle" aria-label="Font Style" class="col-12">
                     <mat-button-toggle (click)="_authService.logInFacebook()" class="col-6 facebook" value="bold"><i class="fa fa-facebook"></i></mat-button-toggle>
@@ -40,7 +41,6 @@
                   </mat-button-toggle-group>
                 </div>
               </div>
-            </form>
         </mat-tab>
 
         <mat-tab class="col-6">
@@ -54,36 +54,34 @@
 								<mat-button-toggle class="col-6 google" value="italic"><i class="fa fa-google"></i></mat-button-toggle>
 							</mat-button-toggle-group>
 						</div>
-            <div class="row">
-              <mat-form-field color="accent" class="col-12">
-                <input matInput placeholder="Nombre completo" color="accent">
-              </mat-form-field>
-            </div>
-            <div class="row">
-              <mat-form-field color="accent" class="col-12">
-                <input matInput placeholder="Correo electronico" [formControl]="email" required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-              </mat-form-field>
-            </div>
-            <div class="row">
-              <mat-form-field color="accent" class="col-12">
-                <input matInput placeholder="Usuario" color="accent">
-              </mat-form-field>
-            </div>
-            <div class="row">
-              <mat-form-field color="accent" class="col-12">
-                <input matInput placeholder="Contraseña">
-              </mat-form-field>
-            </div>
-            <div class="row">
-              <mat-form-field color="accent" class="col-12">
-                <input matInput placeholder="Repetir contraseña">
-              </mat-form-field>
-            </div>
-            <hr>
-            <br>
-            <button mat-stroked-button color="accent" class="col-12" (click)="createUser()">Registrar <mat-icon>save</mat-icon></button>
-          </div>
+						<br><hr><br>
+						<form (ngSubmit)="registerUser(register.value)" #register="ngForm" novalidate="" class="animated fadeIn">
+							<div class="row">
+								<mat-form-field color="accent" class="col-12">
+									<input matInput ngModel placeholder="Nombre completo" color="accent" name="name" required>
+								</mat-form-field>
+							</div>
+							<div class="row">
+								<mat-form-field color="accent" class="col-12">
+									<input matInput placeholder="Correo electronico" [formControl]="email" required name="email" (ngModel)="email.value">
+									<mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+								</mat-form-field>
+							</div>
+							<div class="row">
+								<mat-form-field color="accent" class="col-12">
+									<input matInput type="password" ngModel placeholder="Contraseña" name="password" required>
+								</mat-form-field>
+							</div>
+							<div class="row">
+								<mat-form-field color="accent" class="col-12">
+									<input matInput type="password" ngModel placeholder="Repetir contraseña" name="password_confirm" required>
+								</mat-form-field>
+							</div>
+							<hr>
+							<br>
+							<button mat-stroked-button color="accent" class="col-12">Registrar <mat-icon>save</mat-icon></button>
+						</form>
+					</div>
         </mat-tab>
       </mat-tab-group>
     </div>
