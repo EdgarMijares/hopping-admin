@@ -1,9 +1,21 @@
 <h3 mat-dialog-title>Datos de tu Hop.</h3>
+<form (ngSubmit)="newHop(hop.value)" #hop="ngForm" class="animated fadeIn">
 <mat-dialog-content class="mat-typography">
-	<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas ut quis,
-		quod porro nisi labore provident modi beatae. Est, architecto.</p>
+	<mat-form-field color="accent" class="col-12">
+		<input required matInput placeholder="Nombre fiscal" color="accent" name="bussines_name" ngModel>
+	</mat-form-field>
+	<mat-form-field color="accent" class="col-12">
+		<input required matInput placeholder="RFC" color="accent" name="rfc" ngModel>
+	</mat-form-field>
+	<mat-form-field color="accent" class="col-12">
+		<input required matInput placeholder="Direccion fiscal" color="accent" name="direccion" ngModel>
+	</mat-form-field>
+	<mat-form-field color="accent" class="col-12">
+		<input required matInput placeholder="Codigo Postal" color="accent" name="cp" ngModel>
+	</mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close="false">Cancelar</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Guardar</button>
+  <button mat-button cdkFocusInitial>Guardar</button>
 </mat-dialog-actions>
+</form>

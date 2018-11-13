@@ -27,7 +27,10 @@ export class AppComponent {
 	}
 
 	registeredDialog() {
-		this._dialog.openDialog();
+		this._dialog.newHopDialog().afterClosed()
+      .subscribe(hopData => {
+        console.log(hopData)
+      })
 	}
 
 }

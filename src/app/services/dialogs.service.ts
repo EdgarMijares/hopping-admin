@@ -29,7 +29,7 @@ export class DialogsService {
   }
 
 	newHopDialog() {
-		this.dialog.open(NewhopComponent);
+		return this.dialog.open(NewhopComponent, {width:'400px'});
 	}
 
 	simpleDialog(title:string, text:string):void {

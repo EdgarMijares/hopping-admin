@@ -10,4 +10,8 @@ export class NewhopComponent {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
+  newHop(data) {
+    console.log(data);
+  }
+
 }

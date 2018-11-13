@@ -57,6 +57,20 @@ export class AuthService {
 			}
 		);
   }
+  
+  logInGoogle() {
+    return new Promise<any>((resolve, reject) => {
+      let provider = new firebase.auth.GoogleAuthProvider();
+      this._angularFireAuth.auth
+      .signInWithPopup(provider)
+      .then(res => {
+        this.saveUser(res.user.uid, this.parsingUser(res.additionalUserInfo.profile, 'g', res.user.refreshToken));
+        resolve(res);
+      }, err => {
+        reject(err);
+      })
+    });
+  }
 
   logInFacebook(){
     return new Promise<any>((resolve, reject) => {
@@ -66,20 +80,6 @@ export class AuthService {
         .then(res => {
           // console.log(res.user)
           this.saveUser(res.user.uid, this.parsingUser(res.additionalUserInfo.profile, 'f', res.user.refreshToken));
-          resolve(res);
-        }, err => {
-          reject(err);
-      })
-    });
-  }
-
-  logInGoogle() {
-    return new Promise<any>((resolve, reject) => {
-      let provider = new firebase.auth.GoogleAuthProvider();
-      this._angularFireAuth.auth
-      .signInWithPopup(provider)
-        .then(res => {
-          this.saveUser(res.user.uid, this.parsingUser(res.additionalUserInfo.profile, 'g', res.user.refreshToken));
           resolve(res);
         }, err => {
           reject(err);
@@ -144,5 +144,4 @@ export class AuthService {
       }
     }
   }
-
 }
