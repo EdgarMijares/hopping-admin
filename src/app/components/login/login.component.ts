@@ -20,13 +20,14 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   logInUser(user) {
-		console.log(user);
 		if(user.user === "") {
 			this._dialogService.emptyInput('Introduce tu usuario para continuar.');
 		} else if (user.password === "") {
 			this._dialogService.emptyInput('Introduce tu contraseña para continuar.');
-		} else {
-			this._authService.signUpEmail(user.user, user.password);
+		} else if(user.password.lenght < 6) {
+      this._dialogService.simpleDialog('Contraseña demaciado corta', 'Usa una contraseña de al menos 6 caracteres');
+    } else {
+      this._authService.signUpEmail(user.user, user.password);
 		}
   }
 
@@ -41,8 +42,15 @@ export class LoginComponent implements OnInit {
 			this._dialogService.emptyInput('No has confirmado contraseña.');
 		} else if (user.password != user.password_confirm) {
 			this._dialogService.emptyInput('No coinciden las contraseñas.');
-		} else {
-			this._authService.createUserEmail(this.email.value, user.password, user);
+		} else if(user.password < 6) {
+      this._dialogService.simpleDialog('Contraseña demaciado corta', 'Usa una contraseña de al menos 6 caracteres');
+    } else {
+      this._dialogService.condicionesDialog()
+        .afterClosed().subscribe(condicion => {
+          if(condicion === true) {
+            this._authService.createUserEmail(this.email.value, user.password, user);
+          }
+      })
 		}
 	}
 

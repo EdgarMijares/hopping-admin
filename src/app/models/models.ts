@@ -13,6 +13,44 @@ export interface Reservaciones {
 	}
 }
 
+export interface UserParsing {
+	name:string;
+	email:string;
+	rfc:string;
+	token:string;
+}
+
+export interface UserGoogle {
+	email:string;
+	family_name:string;
+	gender:string;
+	give_name:string;
+	id:string;
+	link:string;
+	locale:string
+	name:string;
+	picture:string;
+	verified_email:boolean;
+}
+
+export interface UserFacebook {
+	email:string;
+	first_name:string;
+	granted_scopes:[];
+	id:string;
+	last_name:string;
+	middle_name:string;
+	name:string;
+	picture: {
+		data: {
+			height:number;
+			is_silhouette:boolean;
+			url:string;
+			width:number;
+		}
+	}
+}
+
 export interface MyHopData {
 	horaApertura: string;
   horaCierre: string;

@@ -24,6 +24,10 @@ export class DialogsService {
     });
   }
 
+  condicionesDialog() {
+    return this.dialog.open(AcuerdoComponent);
+  }
+
 	newHopDialog() {
 		this.dialog.open(NewhopComponent);
 	}
