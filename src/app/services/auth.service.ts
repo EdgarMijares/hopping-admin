@@ -106,6 +106,12 @@ export class AuthService {
 		});
 	}
 
+	getUID() {
+		this.user.subscribe(data => {
+			return data.uid;
+		})
+	}
+
   saveUser(id:string, user:any) {
     this._angularFirestore.collection('users').doc(id).set(user)
       // .then(status => console.log(status))

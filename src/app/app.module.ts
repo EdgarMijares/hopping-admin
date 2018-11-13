@@ -49,6 +49,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ContenedorComponent } from './components/contenedor/contenedor.component';
 import { AcuerdoComponent } from './dialog/acuerdo/acuerdo.component';
 import { NormalComponent } from './dialog/normal/normal.component';
+import { NewhopComponent } from './dialog/newhop/newhop.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { NormalComponent } from './dialog/normal/normal.component';
     LoginComponent,
     ContenedorComponent,
     AcuerdoComponent,
-    NormalComponent
+    NormalComponent,
+    NewhopComponent
   ],
   imports: [
     HttpModule,
@@ -93,7 +95,8 @@ import { NormalComponent } from './dialog/normal/normal.component';
   ],
 	entryComponents: [
 		AcuerdoComponent,
-		NormalComponent
+		NormalComponent,
+		NewhopComponent
 	],
   providers: [
 		//SERVICES

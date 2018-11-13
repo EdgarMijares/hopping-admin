@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MyHopData } from '../../models/models';
-
+// DIALOGS
+// SERVICES
+import { AuthService } from '../../services/auth.service';
 import { MyhopService } from '../../services/myhop.service';
-
+import { DialogsService } from '../../services/dialogs.service';
 @Component({
   selector: 'app-myhop',
   templateUrl: './myhop.component.html',
@@ -37,18 +39,20 @@ export class MyhopComponent implements OnInit {
     {value: '03', viewValue: '03:00'}
 	];
 
-  private hopData:MyHopData[];
-
-  constructor(private _myhopService: MyhopService) {
-    this._myhopService.getHopData().subscribe(data => {
-      this.hopData = data;
-      console.log(data)
-    });
+  // private hopData:MyHopData[];
+  constructor(private _myhopService: MyhopService, private _authService: AuthService, private _dialog: DialogsService) {
+		// this._authService.getUID();
+    // this._myhopService.getHopData(this._authService.getUID()).subscribe(data => {
+    //   this.hopData = data;
+    //   console.log(data)
+    // });
 	}
 
-  ngOnInit() { }
+  ngOnInit() {
 
-  showList(item) {
+	}
+
+	showList(item) {
     // this.weekReservacion.push(item);
   }
 

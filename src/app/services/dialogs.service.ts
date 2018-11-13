@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material';
 // DIALOGS
 import { AcuerdoComponent } from '../dialog/acuerdo/acuerdo.component';
 import { NormalComponent } from '../dialog/normal/normal.component';
+import { NewhopComponent } from '../dialog/newhop/newhop.component';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ import { NormalComponent } from '../dialog/normal/normal.component';
 export class DialogsService {
 
   constructor(private dialog: MatDialog) { }
+
 
 	openDialog() {
     const dialogRef = this.dialog.open(AcuerdoComponent);
@@ -21,6 +23,10 @@ export class DialogsService {
 
     });
   }
+
+	newHopDialog() {
+		this.dialog.open(NewhopComponent);
+	}
 
 	simpleDialog(title:string, text:string):void {
 		this.dialog.open(NormalComponent, {

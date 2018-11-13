@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 
+import { MyhopService } from './services/myhop.service';
+import { DialogsService } from './services/dialogs.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,13 +10,24 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
 
-	private menu: boolean = true;
+	menu: boolean = true;
 
-	constructor(private _authService: AuthService){
-		if(document.body.clientWidth > 600){
+	dataStatus = false;
+	constructor(private _authService: AuthService, private _myhopService: MyhopService, private _dialog: DialogsService,){
+		if(document.body.clientWidth > 700){
 			this.menu = true;
 		} else {
 			this.menu = false;
 		}
+		this._authService.user.subscribe(u => {
+			this._myhopService.getHopData(u.uid).subscribe(d => {
+				this.dataStatus = d.exists;
+			});
+		})
 	}
+
+	registeredDialog() {
+		this._dialog.openDialog();
+	}
+
 }

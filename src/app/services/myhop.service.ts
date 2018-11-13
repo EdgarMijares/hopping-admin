@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+// import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
 })
 export class MyhopService {
   myHopCollection: AngularFirestoreCollection<any>;
-  myHop: Observable<any[]>;
+  myHop:any;
   test:any;
 
   constructor(private angularFirestore: AngularFirestore) {
@@ -23,7 +23,7 @@ export class MyhopService {
     )
   }
 
-  getHopData() {
-		return this.myHop;
+  getHopData(uid:string) {
+		return this.angularFirestore.collection('myhop').doc(uid).get();
 	}
 }
