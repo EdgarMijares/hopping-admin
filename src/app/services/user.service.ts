@@ -1,0 +1,31 @@
+import { Injectable } from '@angular/core';
+
+import { UserParsing } from '../models/models';
+import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
+import { Observable } from 'rxjs/';
+import { map } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class UserService {
+
+	userCollection: AngularFirestoreCollection<UserParsing>;
+	userInfo:any;
+	status:number;
+
+  constructor(private angularFirestore: AngularFirestore) {
+		this.userCollection = this.angularFirestore.collection<UserParsing>('users');
+    this.userInfo = this.userCollection.stateChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as any;
+        return { data };
+      }))
+    )
+		this.userInfo.subscribe(d => this.status = d.data.status);
+	}
+
+	getStatus() {
+		return this.status;
+	}
+}

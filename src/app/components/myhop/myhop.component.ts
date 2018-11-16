@@ -42,7 +42,7 @@ export class MyhopComponent implements OnInit {
   // private hopData:MyHopData[];
   constructor(private _myhopService: MyhopService, private _authService: AuthService, private _dialog: DialogsService) {
 		// this._authService.getUID();
-    // this._myhopService.getHopData(this._authService.getUID()).subscribe(data => {
+    // this._myhopService.getHopData('Io5TCKVrfNM47Lk3l1SjDj8DVOo2').subscribe(data => {
     //   this.hopData = data;
     //   console.log(data)
     // });

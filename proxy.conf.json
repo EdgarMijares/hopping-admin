@@ -1,0 +1,7 @@
+{
+	"/api/*": {
+		"target": "https://pssoftware.com.mx",
+		"secure": false,
+		"changeOrigin": true
+	}
+}

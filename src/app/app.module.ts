@@ -30,6 +30,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // ROUTES
 import { AppRoutingModule } from './app-routing.module';
@@ -88,6 +89,7 @@ import { NewhopComponent } from './dialog/newhop/newhop.component';
     MatTabsModule,
     MatButtonToggleModule,
 		MatDialogModule,
+		MatSnackBarModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
     // AngularFireStorageModule,

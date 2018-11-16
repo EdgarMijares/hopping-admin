@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore  } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
 
 import { UserParsing, UserGoogle, UserFacebook } from '../models/models';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
+import { map } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
 @Injectable({
@@ -15,6 +16,7 @@ export class AuthService {
 
 	user: Observable<firebase.User>;
 	status: boolean;
+	info_user: UserParsing;
 
   constructor(private _angularFireAuth: AngularFireAuth,
     private _angularFirestore: AngularFirestore,
@@ -57,7 +59,7 @@ export class AuthService {
 			}
 		);
   }
-  
+
   logInGoogle() {
     return new Promise<any>((resolve, reject) => {
       let provider = new firebase.auth.GoogleAuthProvider();
@@ -109,9 +111,8 @@ export class AuthService {
 	}
 
 	getUID() {
-		this.user.subscribe(data => {
-			return data.uid;
-		})
+		console.log(this.user)
+		return this.user;
 	}
 
   saveUser(id:string, user:any) {
@@ -120,28 +121,46 @@ export class AuthService {
       .catch(error => console.log(error));
   }
 
+	getUserData() {
+		return this._angularFirestore.collection('users').doc('Io5TCKVrfNM47Lk3l1SjDj8DVOo2').get();
+		// this._angularFirestore.collection<UserParsing>('users')
+		// 	.stateChanges().pipe(
+		// 		map(action => action.map(a => {
+		// 			const info = a.payload.doc.data() as UserParsing;
+		// 			console.log(info)
+		// 			return info;
+		// 		}))
+		// 	)
+
+	}
+
   parsingUser(res:Object, type:string, token:string):UserParsing {
     switch(type) {
       case 'g': {
         let userData:UserGoogle = res as UserGoogle;
-        let userParsing:UserParsing = {
-          'name': userData.name,
-          'email': userData.email,
-          'rfc': '',
-          'token': token
-        }
-        return userParsing;
+				return this.userParsing(userData, token);
       }
       case 'f': {
         let userData:UserFacebook = res as UserFacebook;
-        let userParsing:UserParsing = {
-          'name': userData.name,
-          'email': userData.email,
-          'rfc': '',
-          'token': token
-        }
-        return userParsing;
+        return this.userParsing(userData, token);
       }
     }
   }
+
+	userParsing(user:UserFacebook|UserGoogle, token:string):UserParsing {
+		return {
+			'nombre': user.name,
+			'email': user.email,
+			'token': token,
+			'status': 0,
+			'info_fiscal': {
+				'nombre_fiscal':'',
+				'rfc':'',
+				'direccion':'',
+				'estado':'',
+				'municipio':'',
+				'cp':''
+			}
+		}
+	}
 }

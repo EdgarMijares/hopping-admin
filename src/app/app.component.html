@@ -10,12 +10,17 @@
   </button>
 	</mat-toolbar>
 	<div class="container" style="position:relative; min-height: calc(100vh - 195px);">
-		<div class="centrado-porcentual" *ngIf="!dataStatus">
+		<router-outlet *ngIf="dataStatus == 2"></router-outlet>
+		<div class="centrado-porcentual" *ngIf="dataStatus == 1">
 			<div class="row">
-				<button type="button" class="btn btn-success" (click)="this._dialog.newHopDialog()">REGISTRA TU HOP</button>
+				<button type="button" class="btn btn-success" [routerLink]="['opciones']">AGREGA UN HOP</button>
 			</div>
 		</div>
-		<router-outlet *ngIf="dataStatus"></router-outlet>
+		<div class="centrado-porcentual" *ngIf="dataStatus == 0">
+			<div class="row">
+				<button type="button" class="btn btn-success" (click)="this._dialog.newHopDialog()">REGISTRA TU INFORMACIÓN</button>
+			</div>
+		</div>
 	</div>
 	<app-footer></app-footer>
 </mat-sidenav-container>
