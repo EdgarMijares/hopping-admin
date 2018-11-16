@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
+import { Router, Event, NavigationStart, NavigationEnd} from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 import { MyhopService } from './services/myhop.service';
 import { DialogsService } from './services/dialogs.service';
 import { UserService } from './services/user.service';
 
-import { UserParsing } from './models/models';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,33 +14,28 @@ import { UserParsing } from './models/models';
 export class AppComponent {
 
 	menu: boolean = true;
-
-	dataStatus;
-	constructor(private _authService: AuthService, private _myhopService: MyhopService, private _dialog: DialogsService, private user: UserService){
+	loadingIndicator = true;
+	dataStatus = 2;
+	constructor(private _authService: AuthService, private _myhopService: MyhopService, private _dialog: DialogsService, private user: UserService,
+		private router:Router){
 		if(document.body.clientWidth > 700){
 			this.menu = true;
 		} else {
 			this.menu = false;
 		}
-		this.user;
-		// this.dataStatus = this.user.getStatus()
-		console.log(this.user.getStatus());
-		// console.log(this._authService.getUserData())
-		// this._myhopService.getHopData('Io5TCKVrfNM47Lk3l1SjDj8DVOo2').subscribe(d => console.log(d));
-		// this._myhopService.getHopData('Io5TCKVrfNM47Lk3l1SjDj8DVOo2').subscribe(data => {
-    //   this.hopData = data;
-    //   console.log(data)
-    // });
-		// this._authService.user.subscribe(u => {
-		// 	this._authService.getUserData(u.uid).subscribe(d => {
-		// 		d.subscribe( c => console.log(c))
-		// 	})
-			// this._myhopService.getHopData(u.uid).subscribe(d => {
-			// 	this._authService.getUserData(u)
-			// 	this.dataStatus = !d.exists;
-			// 	console.log(!d.exists)
-			// });
-		// })
+		// this.router.events.subscribe((rotuerEvent: Event) => {
+		// 	if(rotuerEvent instanceof NavigationStart) {
+		// 		this.loadingIndicator = true;
+		// 	} else if (rotuerEvent instanceof NavigationEnd) {
+		// 		this.loadingIndicator = false;
+		// 	}
+		// });
+		this.user.getStatus().subscribe(status => {
+				this.dataStatus = status[0]
+				this.loadingIndicator = false;
+
+			}
+		);
 	}
 
 	registeredDialog() {

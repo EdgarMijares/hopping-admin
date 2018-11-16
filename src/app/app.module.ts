@@ -31,6 +31,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+// import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // ROUTES
 import { AppRoutingModule } from './app-routing.module';
@@ -90,6 +92,7 @@ import { NewhopComponent } from './dialog/newhop/newhop.component';
     MatButtonToggleModule,
 		MatDialogModule,
 		MatSnackBarModule,
+		MatProgressSpinnerModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
     // AngularFireStorageModule,

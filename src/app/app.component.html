@@ -1,6 +1,7 @@
+
 <app-login *ngIf="!(_authService.user | async)"></app-login>
 <mat-sidenav-container *ngIf="(_authService.user | async)">
-	<mat-sidenav #sidenav mode="side" [opened]="menu">
+	<mat-sidenav #sidenav mode="side" [opened]="menu" style="background: #000">
 		<div class="percent-menu"></div>
 		<app-menubar style="height: 100vh"></app-menubar>
 	</mat-sidenav>
@@ -9,16 +10,19 @@
     <mat-icon aria-label="MENU">menu</mat-icon>
   </button>
 	</mat-toolbar>
-	<div class="container" style="position:relative; min-height: calc(100vh - 195px);">
-		<router-outlet *ngIf="dataStatus == 2"></router-outlet>
-		<div class="centrado-porcentual" *ngIf="dataStatus == 1">
-			<div class="row">
-				<button type="button" class="btn btn-success" [routerLink]="['opciones']">AGREGA UN HOP</button>
-			</div>
+	<div class="container"style="position:relative; min-height: calc(100vh - 195px); margin-top: 20px;">
+		<div class="centrado-porcentual">
+				<mat-spinner *ngIf="loadingIndicator" color="accent"></mat-spinner>
 		</div>
+		<router-outlet *ngIf="dataStatus == 2 && !loadingIndicator"></router-outlet>
 		<div class="centrado-porcentual" *ngIf="dataStatus == 0">
 			<div class="row">
 				<button type="button" class="btn btn-success" (click)="this._dialog.newHopDialog()">REGISTRA TU INFORMACIÓN</button>
+			</div>
+		</div>
+		<div class="centrado-porcentual" *ngIf="dataStatus == 1">
+			<div class="row">
+				<button type="button" class="btn btn-success" [routerLink]="['detalles']" (click)="dataStatus = 2">AGREGA UN HOP</button>
 			</div>
 		</div>
 	</div>

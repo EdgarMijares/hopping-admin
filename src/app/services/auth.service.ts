@@ -66,7 +66,7 @@ export class AuthService {
       this._angularFireAuth.auth
       .signInWithPopup(provider)
       .then(res => {
-        this.saveUser(res.user.uid, this.parsingUser(res.additionalUserInfo.profile, 'g', res.user.refreshToken));
+				(res.additionalUserInfo.isNewUser)? this.saveUser(res.user.uid, this.parsingUser(res.additionalUserInfo.profile, 'g', res.user.refreshToken)) : this.updateToken(res.user.uid, res.user.refreshToken)
         resolve(res);
       }, err => {
         reject(err);
@@ -80,8 +80,7 @@ export class AuthService {
       this._angularFireAuth.auth
       .signInWithPopup(provider)
         .then(res => {
-          // console.log(res.user)
-          this.saveUser(res.user.uid, this.parsingUser(res.additionalUserInfo.profile, 'f', res.user.refreshToken));
+          (res.additionalUserInfo.isNewUser)? this.saveUser(res.user.uid, this.parsingUser(res.additionalUserInfo.profile, 'f', res.user.refreshToken))  : this.updateToken(res.user.uid, res.user.refreshToken)
           resolve(res);
         }, err => {
           reject(err);
@@ -121,17 +120,14 @@ export class AuthService {
       .catch(error => console.log(error));
   }
 
-	getUserData() {
-		return this._angularFirestore.collection('users').doc('Io5TCKVrfNM47Lk3l1SjDj8DVOo2').get();
-		// this._angularFirestore.collection<UserParsing>('users')
-		// 	.stateChanges().pipe(
-		// 		map(action => action.map(a => {
-		// 			const info = a.payload.doc.data() as UserParsing;
-		// 			console.log(info)
-		// 			return info;
-		// 		}))
-		// 	)
+	updateToken(id:string, token:string) {
+    this._angularFirestore.collection('users').doc(id).update({token: token})
+      // .then(status => console.log(status))
+      .catch(error => console.log(error));
+  }
 
+	getUserData(uid:string) {
+		return this._angularFirestore.collection('users').doc(uid).get();
 	}
 
   parsingUser(res:Object, type:string, token:string):UserParsing {

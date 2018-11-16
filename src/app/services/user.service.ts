@@ -22,10 +22,16 @@ export class UserService {
         return { data };
       }))
     )
-		this.userInfo.subscribe(d => this.status = d.data.status);
+		this.userInfo.subscribe((d:UserParsing) => this.status = d.status);
 	}
 
 	getStatus() {
-		return this.status;
+		return this.userCollection.stateChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as UserParsing;
+        return data.status;
+      }))
+		)
+		// return this.status;
 	}
 }

@@ -28,7 +28,7 @@ export class NewhopComponent implements OnInit {
 							private lugares: MunicipiosService,
 							private dialogs: MatSnackBar) {
 		this.lugares.getMunicipios();
-		this.lugares.getEstados().subscribe((data:Estados) => {this.estados = data; console.log(this.estados)});
+		this.lugares.getEstados().subscribe((data:Estados) => {this.estados = data;});
 	}
 
 	ngOnInit() { }
@@ -49,20 +49,17 @@ export class NewhopComponent implements OnInit {
 		} else if (data.cp.length < 5) {
 			this.createMessageAlert('Tu CP esta incompleto');
 		} else {
-			console.log(data);
 			this.auth.getUID().subscribe(d => {
 				if(d.uid != null) {
 					this.saveUser(d.uid, data);
 				}
 			});
-			// this.saveUser(this.uid)
 			this.dialogRef.close();
 		}
-		// console.log(this.auth.getUID());
   }
 
 	saveUser(id:string, fiscal:Fiscal) {
-    this._fireStore.collection('users').doc(id).update({info_fiscal: { fiscal }})
+    this._fireStore.collection('users').doc(id).update({status: 1, info_fiscal: { fiscal }})
       .then(status => console.log(status))
       .catch(error => console.log(error));
   }
