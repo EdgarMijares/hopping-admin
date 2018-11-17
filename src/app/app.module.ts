@@ -53,6 +53,7 @@ import { ContenedorComponent } from './components/contenedor/contenedor.componen
 import { AcuerdoComponent } from './dialog/acuerdo/acuerdo.component';
 import { NormalComponent } from './dialog/normal/normal.component';
 import { NewhopComponent } from './dialog/newhop/newhop.component';
+import { PricingComponent } from './components/pricing/pricing.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { NewhopComponent } from './dialog/newhop/newhop.component';
     ContenedorComponent,
     AcuerdoComponent,
     NormalComponent,
-    NewhopComponent
+    NewhopComponent,
+    PricingComponent
   ],
   imports: [
     HttpModule,

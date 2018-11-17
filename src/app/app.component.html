@@ -20,10 +20,11 @@
 				<button type="button" class="btn btn-success" (click)="this._dialog.newHopDialog()">REGISTRA TU INFORMACIÓN</button>
 			</div>
 		</div>
-		<div class="centrado-porcentual" *ngIf="dataStatus == 1">
-			<div class="row">
-				<button type="button" class="btn btn-success" [routerLink]="['detalles']" (click)="dataStatus = 2">AGREGA UN HOP</button>
-			</div>
+		<div class="" *ngIf="dataStatus == 1">
+			<app-pricing></app-pricing>
+			<!-- <div class="row"> -->
+				<!-- <button type="button" class="btn btn-success" [routerLink]="['detalles']" (click)="dataStatus = 2">AGREGA UN HOP</button> -->
+			<!-- </div> -->
 		</div>
 	</div>
 	<app-footer></app-footer>
