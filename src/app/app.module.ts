@@ -21,6 +21,7 @@ import { UserService } from './services/user.service';
 
 //MODULES
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 // DISEÑO
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -100,6 +101,9 @@ import { PricingComponent } from './components/pricing/pricing.component';
         MatDialogModule,
         MatSnackBarModule,
         MatProgressSpinnerModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyAk2F-qNHQArEDnH5q0YlvQ5Wt8dqVuQko'
+        }),
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
         // AngularFireStorageModule,

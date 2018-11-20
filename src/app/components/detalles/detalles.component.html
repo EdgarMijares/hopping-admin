@@ -20,8 +20,13 @@
   <hr>
   <div class="row">
     <div class="col-12">
-      <script src="https://www.hoppingapp.com/js/googlemaps.js"></script>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14576.200063880004!2d-104.6762739!3d24.02930135!3m2!1i1024!2i768!4f13.1!4m3!3e6!4m0!4m0!5e0!3m2!1ses-419!2smx!4v1540918620234" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15">
+            <agm-marker [latitude]="lat" [longitude]="lng">
+                <agm-info-window>
+                    <p>Lorem ipsum dolor.</p>
+                </agm-info-window>
+            </agm-marker>
+        </agm-map>
     </div>
   </div>
 </div>
