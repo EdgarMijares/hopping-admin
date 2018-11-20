@@ -18,11 +18,8 @@ export class AppComponent {
 	dataStatus;
 	constructor(private _authService: AuthService, private _myhopService: MyhopService, private _dialog: DialogsService, private user: UserService,
 		private router:Router){
-		if(document.body.clientWidth > 700){
-			this.menu = true;
-		} else {
-			this.menu = false;
-		}
+		(document.body.clientWidth > 700)? this.menu = true : this.menu = false;
+		// if(this.dataStatus == undefined){this.loadingIndicator = true;}
 		this.router.events.subscribe((rotuerEvent: Event) => {
 			if(rotuerEvent instanceof NavigationStart) {
 				this.loadingIndicator = true;
@@ -32,7 +29,7 @@ export class AppComponent {
 		});
 		this.user.getStatus().subscribe(status => {
 				this.dataStatus = status[0];
-				this.loadingIndicator = false;
+				// this.loadingIndicator = false;
 			}
 		);
 	}

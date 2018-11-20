@@ -9,14 +9,14 @@
                       <div class="price-value">10
                           <span class="currency">$</span>
                           <span class="month">/mo</span>
-                      </div>
-                  </div>
-									<ul class="pricing-content" >
-										<div *ngFor="let data_plan of listPriceOne">
-											<li>{{ data_plan }}</li>
-										</div>
-									</ul>
-                  <a href="#" class="read">Comprar<i class="fa fa-angle-right"></i></a>
+	                  </div>
+					</div>
+					<ul class="pricing-content">
+						<div *ngFor="let data_plan of listPriceOne">
+							<li>{{ data_plan }}</li>
+						</div>
+					</ul>
+                  <a (click)="updateStatus()" class="read" >Comprar<i class="fa fa-angle-right"></i></a>
               </div>
           </div>
 
@@ -30,11 +30,11 @@
                           <span class="month">/mo</span>
                       </div>
                   </div>
-									<ul class="pricing-content" >
-										<div *ngFor="let data_plan of listPriceTwo">
-											<li>{{ data_plan }}</li>
-										</div>
-									</ul>
+					<ul class="pricing-content" >
+						<div *ngFor="let data_plan of listPriceTwo">
+							<li>{{ data_plan }}</li>
+						</div>
+					</ul>
                   <a href="#" class="read">Comprar<i class="fa fa-angle-right"></i></a>
               </div>
           </div>
@@ -49,11 +49,11 @@
                           <span class="month">/mo</span>
                       </div>
                   </div>
-									<ul class="pricing-content" >
-										<div *ngFor="let data_plan of listPriceThree">
-											<li>{{ data_plan }}</li>
-										</div>
-									</ul>
+					<ul class="pricing-content" >
+						<div *ngFor="let data_plan of listPriceThree">
+							<li>{{ data_plan }}</li>
+						</div>
+					</ul>
                   <a href="#" class="read">Comprar<i class="fa fa-angle-right"></i></a>
               </div>
           </div>

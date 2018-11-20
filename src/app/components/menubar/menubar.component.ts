@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-menubar',
@@ -8,9 +7,11 @@ import { AuthService } from '../../services/auth.service';
 })
 export class MenubarComponent implements OnInit {
 	showFiller = false;
-  constructor(private _authService: AuthService) { }
 
-  ngOnInit() {
-  }
+    constructor() {
+
+    }
+
+    ngOnInit() { }
 
 }

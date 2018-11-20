@@ -14,24 +14,23 @@ export class UserService {
 	userInfo:any;
 	status:number;
 
-  constructor(private angularFirestore: AngularFirestore) {
+    constructor(private angularFirestore: AngularFirestore) {
 		this.userCollection = this.angularFirestore.collection<UserParsing>('users');
-    this.userInfo = this.userCollection.stateChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as any;
-        return { data };
-      }))
-    )
-		this.userInfo.subscribe((d:UserParsing) => this.status = d.status);
-	}
+        this.userInfo = this.userCollection.stateChanges().pipe(
+            map(actions => actions.map(a => {
+                const data = a.payload.doc.data() as any;
+                return { data };
+            }))
+        )
+    	this.userInfo.subscribe((d:UserParsing) => this.status = d.status);
+    }
 
 	getStatus() {
-		return this.userCollection.stateChanges().pipe(
-      map(actions => actions.map(a => {
-        const data = a.payload.doc.data() as UserParsing;
-        return data.status;
-      }))
+        return this.userCollection.stateChanges().pipe(
+            map(actions => actions.map(a => {
+                const data = a.payload.doc.data() as UserParsing;
+                return data.status;
+            }))
 		)
-		// return this.status;
 	}
 }

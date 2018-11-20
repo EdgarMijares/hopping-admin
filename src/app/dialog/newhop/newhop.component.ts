@@ -21,19 +21,19 @@ export class NewhopComponent implements OnInit {
 	municipios:Municipios[];
 	uid: string;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-							public dialogRef: MatDialogRef<NewhopComponent>,
-							private _fireStore: AngularFirestore,
-							private auth: AuthService,
-							private lugares: MunicipiosService,
-							private dialogs: MatSnackBar) {
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+				public dialogRef: MatDialogRef<NewhopComponent>,
+				private _fireStore: AngularFirestore,
+				private auth: AuthService,
+				private lugares: MunicipiosService,
+				private dialogs: MatSnackBar) {
 		this.lugares.getMunicipios();
 		this.lugares.getEstados().subscribe((data:Estados) => {this.estados = data;});
 	}
 
 	ngOnInit() { }
 
-  newHop(data: Fiscal) {
+    newHop(data: Fiscal) {
 		if(data.nombre_fiscal === ""){
 			this.createMessageAlert('No ingresaste tu referencia Fiscal.');
 		} else if (data.rfc === "") {
@@ -55,14 +55,14 @@ export class NewhopComponent implements OnInit {
 				}
 			});
 			this.dialogRef.close();
-		}
-  }
+        }
+    }
 
-	saveUser(id:string, fiscal:Fiscal) {
-    this._fireStore.collection('users').doc(id).update({status: 1, info_fiscal: { fiscal }})
-      .then(status => console.log(status))
-      .catch(error => console.log(error));
-  }
+    saveUser(id:string, fiscal:Fiscal) {
+        this._fireStore.collection('users').doc(id).update({status: 1, info_fiscal: { fiscal }})
+          .then(status => console.log(status))
+          .catch(error => console.log(error));
+    }
 
 	cargarMunicipios(d) {
 		this.municipios = this.lugares.getMunicipiosPorEstado(d);
