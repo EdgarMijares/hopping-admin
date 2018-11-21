@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Upload } from '../../models/upload';
 
 @Component({
   selector: 'app-detalles',
@@ -9,9 +10,9 @@ import { FormControl, Validators } from '@angular/forms';
 export class DetallesComponent implements OnInit {
 
     email = new FormControl('', [Validators.required, Validators.email]);
-    lat: number = 51.678418;
-    lng: number = 7.809007;
-    
+    lat: number = 24.0291689;
+    lng: number = -104.6606727;
+
     constructor() { }
 
     ngOnInit() { }
