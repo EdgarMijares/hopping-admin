@@ -27,11 +27,14 @@ export class AppComponent {
 				this.loadingIndicator = false;
 			}
 		});
-		this.user.getStatus().subscribe(status => {
-				this.dataStatus = status[0];
-				// this.loadingIndicator = false;
-			}
-		);
+		// this.user.getStatus('Dne9XJXBgtPokW6g6X0p93azoO22').subscribe(status => {
+		// 		this.dataStatus = status;
+        //         status.subscribe(d => console.log(d))
+        //         console.log(status)
+		// 		// this.loadingIndicator = false;
+		// 	}
+		// );
+        console.log(this.user.getStatus('Dne9XJXBgtPokW6g6X0p93azoO22'));
 	}
 
 	registeredDialog() {

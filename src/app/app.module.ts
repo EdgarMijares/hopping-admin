@@ -18,6 +18,7 @@ import { MyhopService } from './services/myhop.service';
 import { PaymentService } from './services/payment.service';
 import { ReservacionesService } from './services/reservaciones.service';
 import { UserService } from './services/user.service';
+import { PlanService } from './services/plan.service';
 
 //MODULES
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -122,7 +123,8 @@ import { PricingComponent } from './components/pricing/pricing.component';
         MyhopService,
 		DialogsService,
         PaymentService,
-        UserService
+        UserService,
+        PlanService
 		//DIALOGS
 		// AcuerdoComponent
 	],
