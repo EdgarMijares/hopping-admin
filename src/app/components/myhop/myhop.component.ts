@@ -41,7 +41,7 @@ export class MyhopComponent implements OnInit {
 	];
 
     private plan:string;
-
+    private noHops:number;
   // private hopData:MyHopData[];
     constructor(private _myhopService: MyhopService, private _authService: AuthService, private _user: UserService) {
     	// this._authService.getUID();
@@ -53,7 +53,17 @@ export class MyhopComponent implements OnInit {
 
     ngOnInit() {
         this._authService.getUID().subscribe(user => {
-            this._user.getPlanU(user.uid).valueChanges().subscribe( plan => { this.plan = plan.plan.tipo_plan })
+            this._user.getPlanU(user.uid).valueChanges().subscribe( plan => {
+                this.plan = plan.plan.tipo_plan;
+                switch (plan.plan.tipo_plan) {
+                    case 'doble': this.noHops = 2; break;
+                    case 'triple': this.noHops = 3; break;
+                    case 'gold': this.noHops = 4; break;
+                }
+                console.log(this.noHops)
+            });
+            // this.noHops = this._user.getPlanAcces(user.uid);
+            // console.log(this._user.getPlanAcces(user.uid))
         })
     }
 

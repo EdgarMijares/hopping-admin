@@ -26,10 +26,26 @@ export class UserService {
     }
 
 	getStatus(uid: string) {
-        return this.angularFirestore.collection('users').doc<UserParsing>(uid);
+        return this.userCollection.doc<UserParsing>(uid);
 	}
-    
+
     getPlanU(uid: string) {
-        return this.angularFirestore.collection('users').doc<UserParsing>(uid);
+        return this.userCollection.doc<UserParsing>(uid);
+    }
+
+    getTipoPlan(uid: string) {
+        return this.userCollection.doc<UserParsing>(uid)
+    }
+
+    getPlanAcces(uid: string):number {
+        let temp: number;
+        this.getTipoPlan(uid).valueChanges().subscribe(d => {
+            switch (d.plan.tipo_plan) {
+                case 'doble': temp = 2; break;
+                case 'triple': temp = 3; break;
+                case 'gold': temp = 4; break;
+            }
+        })
+        return temp;
     }
 }
