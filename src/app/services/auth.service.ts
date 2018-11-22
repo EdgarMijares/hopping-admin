@@ -140,7 +140,6 @@ export class AuthService {
         if(dia == 31) { dia = 30 }
 
         let fin = dia + '/' + (mes + 1) + '/' + ano;
-        console.log(inicio, fin);
         this.getUID().subscribe(data => {
             this._angularFirestore.collection('users').doc(data.uid).update({status: 2, plan:{ inicio, fin, tipo_plan}});
         })

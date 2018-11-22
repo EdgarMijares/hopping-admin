@@ -5,6 +5,7 @@ import { AuthService } from './services/auth.service';
 import { MyhopService } from './services/myhop.service';
 import { DialogsService } from './services/dialogs.service';
 import { UserService } from './services/user.service';
+import { UserParsing } from './models/models';
 
 @Component({
   selector: 'app-root',
@@ -27,14 +28,11 @@ export class AppComponent {
 				this.loadingIndicator = false;
 			}
 		});
-		// this.user.getStatus('Dne9XJXBgtPokW6g6X0p93azoO22').subscribe(status => {
-		// 		this.dataStatus = status;
-        //         status.subscribe(d => console.log(d))
-        //         console.log(status)
-		// 		// this.loadingIndicator = false;
-		// 	}
-		// );
-        console.log(this.user.getStatus('Dne9XJXBgtPokW6g6X0p93azoO22'));
+        this._authService.getUID().subscribe(user => {
+            this.user.getStatus(user.uid).valueChanges().subscribe(d => {
+                this.dataStatus = d.status;
+            });
+        })
 	}
 
 	registeredDialog() {
