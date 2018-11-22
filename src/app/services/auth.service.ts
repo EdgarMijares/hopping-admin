@@ -124,42 +124,64 @@ export class AuthService {
   }
 
 	updateToken(id:string, token:string) {
-    this._angularFirestore.collection('users').doc(id).update({token: token})
-      // .then(status => console.log(status))
-      .catch(error => console.log(error));
-  }
+        this._angularFirestore.collection('users').doc(id).update({token: token})
+        // .then(status => console.log(status))
+        .catch(error => console.log(error));
+    }
+
+    updatePlan( tipo_plan : string) {
+        let date = new Date();
+        let dia = date.getDate();
+        let mes = date.getMonth() + 1;
+        let ano = date.getFullYear();
+        let inicio = dia + '/' + mes + '/' + ano;
+
+        if ( (mes + 1) > 12 ) { ano += 1; mes = 0; }
+        if(dia == 31) { dia = 30 }
+
+        let fin = dia + '/' + (mes + 1) + '/' + ano;
+        console.log(inicio, fin);
+        this.getUID().subscribe(data => {
+            this._angularFirestore.collection('users').doc(data.uid).update({status: 2, plan:{ inicio, fin, tipo_plan}});
+        })
+    }
 
 	getUserData(uid:string) {
 		return this._angularFirestore.collection('users').doc(uid).get();
 	}
 
-  parsingUser(res:Object, type:string, token:string):UserParsing {
-    switch(type) {
-      case 'g': {
-        let userData:UserGoogle = res as UserGoogle;
-				return this.userParsing(userData, token);
-      }
-      case 'f': {
-        let userData:UserFacebook = res as UserFacebook;
-        return this.userParsing(userData, token);
-      }
+    parsingUser(res:Object, type:string, token:string):UserParsing {
+        switch(type) {
+            case 'g': {
+                let userData:UserGoogle = res as UserGoogle;
+    			return this.userParsing(userData, token);
+            }
+            case 'f': {
+                let userData:UserFacebook = res as UserFacebook;
+                return this.userParsing(userData, token);
+            }
+        }
     }
-  }
 
 	userParsing(user:UserFacebook|UserGoogle, token:string):UserParsing {
 		return {
-			'nombre': user.name,
-			'email': user.email,
-			'token': token,
-			'status': 0,
-			'info_fiscal': {
-				'nombre_fiscal':'',
-				'rfc':'',
-				'direccion':'',
-				'estado':'',
-				'municipio':'',
-				'cp':''
-			}
+			'nombre' : user.name,
+			'email' : user.email,
+			'token' : token,
+			'status' : 0,
+			'info_fiscal' : {
+				'nombre_fiscal' : '',
+				'rfc' : '',
+				'direccion' : '',
+				'estado' : '',
+				'municipio' : '',
+				'cp' : ''
+			},
+      'plan' : {
+    		'fecha_inicio' : '',
+    		'fecha_fin' : '',
+    		'tipo_plan' : ''
+    	}
 		}
 	}
 }

@@ -25,12 +25,13 @@ export class UserService {
     	this.userInfo.subscribe((d:UserParsing) => this.status = d.status);
     }
 
-	getStatus() {
-        return this.userCollection.stateChanges().pipe(
-            map(actions => actions.map(a => {
-                const data = a.payload.doc.data() as UserParsing;
-                return data.status;
-            }))
-		)
+	getStatus(uid: string) {
+        // return this.userCollection.stateChanges().pipe(
+        //     map(actions => actions.map(a => {
+        //         const data = a.payload.doc.data() as UserParsing;
+        //         return data.status;
+        //     }))
+		// )
+        return this.angularFirestore.collection<UserParsing>('users').doc(uid).get();
 	}
 }
