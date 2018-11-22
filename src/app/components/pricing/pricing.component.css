@@ -1,5 +1,5 @@
 .demo{
-	padding: 100px 0;
+	/* padding: 100px 0; */
 }
 .heading-title {
 	margin-bottom: 100px;
@@ -11,6 +11,10 @@
     position: relative;
     padding-bottom: 40px;
     transform: translateZ(0px);
+}
+
+.gold {
+    /* border: 2px solid #d4af37 !important; */
 }
 
 .pricingTable:before,
@@ -39,6 +43,16 @@
     transform-origin: 0 100% 0;
 }
 
+.gold:after{
+    border-bottom: 2px solid #d4af37;
+    border-top: 2px solid #d4af37;
+}
+
+.gold:before{
+    border-right: 2px solid #d4af37;
+    border-left: 2px solid #d4af37;
+}
+
 .pricingTable:hover:before{
     transform: scaleY(1);
 }
@@ -52,6 +66,10 @@
     color: #fff;
     margin: -2px -2px 35px;
     padding: 40px 0;
+}
+
+.gold .pricingTable-header{
+    background: #d4af37 !important;
 }
 
 .pricingTable .heading{
@@ -100,6 +118,10 @@
     line-height: 40px;
 }
 
+.gold .pricing-content li{
+    /* color: #d4af37 !important; */
+}
+
 .pricingTable .read{
     display: inline-block;
     border: 2px solid #7a7e82;
@@ -113,9 +135,20 @@
     transition: all 0.3s ease 0s;
 }
 
+.gold .read{
+    border: 2px solid #d4af37;
+		border-right: none;
+    color: #d4af37;
+}
+
 .pricingTable .read:hover{
     border-color: #000;
     color: #000;
+}
+
+.gold .read:hover{
+    border-color: #d4af37 !important;
+    color: #d4af37 !important;
 }
 
 .pricingTable .read i{
@@ -142,6 +175,12 @@
     transition: all 0.3s ease 0s;
 }
 
+.gold .read:before,
+.gold .read:after{
+    border-left: 2px solid #d4af37;
+}
+
+
 .pricingTable .read:before{
     bottom: -6px;
     transform: rotate(45deg);
@@ -157,6 +196,10 @@
     border-left-color: #000;
 }
 
-@media screen and (max-width: 990px){
-    .pricingTable{ margin-bottom: 25px; }
+.gold .read:hover:before,
+.gold .read:hover:after{
+    border-left-color: #d4af37 !important;
 }
+
+.pricingTable{ margin-bottom: 25px; }
+@media screen and (max-width: 990px){ }

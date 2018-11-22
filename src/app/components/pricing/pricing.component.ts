@@ -9,9 +9,10 @@ import { AngularFirestore  } from '@angular/fire/firestore';
 })
 export class PricingComponent implements OnInit {
 
-	private listPriceOne:string[] = ['DATO PLAN 1', 'DATO PLAN 2', 'DATO PLAN 3', 'DATO PLAN 4'];
-	private listPriceTwo:string[] = ['DATO PLAN 1', 'DATO PLAN 2', 'DATO PLAN 3', 'DATO PLAN 4'];
-	private listPriceThree:string[] = ['DATO PLAN 1', 'DATO PLAN 2', 'DATO PLAN 3', 'DATO PLAN 4'];
+	private listPriceOne:string[] = ['ADMINISTRA 1 BAR', 'RESERVACIONES', 'FEED 4 ESPACIOS', 'GALERIA 10 ESPACIOS', 'UBICACION'];
+	private listPriceTwo:string[] = ['ADMINISTRA 2 BARES', 'RESERVACIONES', 'FEED 4 ESPACIOS', 'GALERIA 10 ESPACIOS', 'UBICACION'];
+    private listPriceThree:string[]=['ADMINISTRA 3 BARES', 'RESERVACIONES', 'FEED 4 ESPACIOS', 'GALERIA 10 ESPACIOS', 'UBICACION'];
+	private listPriceFour:string[] =['ADMINISTRA 4 O 5 BARES', 'RESERVACIONES', 'FEED 4 ESPACIOS', 'GALERIA 10 ESPACIOS', 'UBICACION'];
 
     constructor(private _authService: AuthService,
                 private _angularFirestore: AngularFirestore) { }
@@ -24,5 +25,9 @@ export class PricingComponent implements OnInit {
                 this._angularFirestore.collection('users').doc(id.uid).update({status: 2})
             }
         })
+    }
+
+    subscribePlan(plan_tipo) {
+        this._authService.updatePlan(plan_tipo);
     }
 }
