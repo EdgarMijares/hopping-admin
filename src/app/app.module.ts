@@ -40,6 +40,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 // import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 // ROUTES
 import { AppRoutingModule } from './app-routing.module';
@@ -102,6 +103,7 @@ import { PricingComponent } from './components/pricing/pricing.component';
         MatDialogModule,
         MatSnackBarModule,
         MatProgressSpinnerModule,
+        MatExpansionModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyAk2F-qNHQArEDnH5q0YlvQ5Wt8dqVuQko'
         }),

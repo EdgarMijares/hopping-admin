@@ -1,65 +1,142 @@
 <h1 class="text-center">Mi Hop</h1>
 <hr>
-<form (ngSubmit)="getData(objeto.value)" #objeto="ngForm" novalidate="" class="animated fadeIn">
-	<h4 class="text-center">HORARIOS DE SERVICIO</h4>
-	<br>
-	<div class="container">
-		<div class="row">
-			<div class="col col-6  col-sm-3" *ngFor="let item of weekServicio; let i = index">
-				<mat-checkbox
-					(click)="showList(item)" ngModel name="{{ item | lowercase }}Servicio">{{ item }}</mat-checkbox>
-			</div>
-			<div class="col-12 col-sm-6">
-				<mat-form-field class="col-12">
-					<mat-select placeholder="Hora de inicio" name="horaApertura" ngModel>
-						<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
-							{{ hora.viewValue }}
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</div>
-			<div class="col-12 col-sm-6">
-				<mat-form-field class="col-12">
-					<mat-select placeholder="Hora de termino" name="horaCierre" ngModel>
-						<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
-							{{ hora.viewValue }}
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</div>
+<mat-accordion *ngIf="plan != 'simple'">
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>DIRECCION</mat-panel-title>
+			<mat-panel-description>DESCRIPCION</mat-panel-description>
+		</mat-expansion-panel-header>
+		<div class="">
+			<form (ngSubmit)="getData(objeto.value)" #objeto="ngForm" novalidate="" class="animated fadeIn">
+				<h4 class="text-center">HORARIOS DE SERVICIO</h4>
+				<br>
+				<div class="container">
+					<div class="row">
+						<div class="col col-6  col-sm-3" *ngFor="let item of weekServicio; let i = index">
+							<mat-checkbox
+							(click)="showList(item)" ngModel name="{{ item | lowercase }}Servicio">{{ item }}</mat-checkbox>
+						</div>
+						<div class="col-12 col-sm-6">
+							<mat-form-field class="col-12">
+								<mat-select placeholder="Hora de inicio" name="horaApertura" ngModel>
+									<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
+										{{ hora.viewValue }}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+						<div class="col-12 col-sm-6">
+							<mat-form-field class="col-12">
+								<mat-select placeholder="Hora de termino" name="horaCierre" ngModel>
+									<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
+										{{ hora.viewValue }}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<h4 class="text-center">HORARIOS DE RESERVACIÓN</h4>
+				<div class="container">
+					<br>
+					<div class="row">
+						<div class="col col-6  col-sm-3" *ngFor="let item of weekReservacion; let i = index">
+							<mat-checkbox ngModel name="{{ item | lowercase }}Reservacion" *ngIf="item!=''">{{ item }}</mat-checkbox>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-12 col-sm-6">
+							<mat-form-field class="col-12">
+								<mat-select placeholder="Hora de inicio" name="horaInicio" ngModel>
+									<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
+										{{ hora.viewValue }}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+						<div class="col-12 col-sm-6">
+							<mat-form-field class="col-12">
+								<mat-select placeholder="Hora de termino" name="horaTermino" ngModel>
+									<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
+										{{ hora.viewValue }}
+									</mat-option>
+								</mat-select>
+							</mat-form-field>
+						</div>
+						<div class="col-12 col-md-12">
+							<button (click)="onClick()" class="btn btn-rosa col-12">GUARDAR</button>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
-	</div>
-	<hr>
-	<h4 class="text-center">HORARIOS DE RESERVACIÓN</h4>
-	<div class="container">
+	</mat-expansion-panel>
+</mat-accordion>
+<br>
+<div *ngIf="plan === 'simple'">
+	<form (ngSubmit)="getData(objeto.value)" #objeto="ngForm" novalidate="" class="animated fadeIn">
+		<h4 class="text-center">HORARIOS DE SERVICIO</h4>
 		<br>
-		<div class="row">
-			<div class="col col-6  col-sm-3" *ngFor="let item of weekReservacion; let i = index">
-				<mat-checkbox ngModel name="{{ item | lowercase }}Reservacion" *ngIf="item!=''">{{ item }}</mat-checkbox>
+		<div class="container">
+			<div class="row">
+				<div class="col col-6  col-sm-3" *ngFor="let item of weekServicio; let i = index">
+					<mat-checkbox
+					(click)="showList(item)" ngModel name="{{ item | lowercase }}Servicio">{{ item }}</mat-checkbox>
+				</div>
+				<div class="col-12 col-sm-6">
+					<mat-form-field class="col-12">
+						<mat-select placeholder="Hora de inicio" name="horaApertura" ngModel>
+							<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
+								{{ hora.viewValue }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div class="col-12 col-sm-6">
+					<mat-form-field class="col-12">
+						<mat-select placeholder="Hora de termino" name="horaCierre" ngModel>
+							<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
+								{{ hora.viewValue }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-12 col-sm-6">
-				<mat-form-field class="col-12">
-					<mat-select placeholder="Hora de inicio" name="horaInicio" ngModel>
-						<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
-							{{ hora.viewValue }}
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
+		<hr>
+		<h4 class="text-center">HORARIOS DE RESERVACIÓN</h4>
+		<div class="container">
+			<br>
+			<div class="row">
+				<div class="col col-6  col-sm-3" *ngFor="let item of weekReservacion; let i = index">
+					<mat-checkbox ngModel name="{{ item | lowercase }}Reservacion" *ngIf="item!=''">{{ item }}</mat-checkbox>
+				</div>
 			</div>
-			<div class="col-12 col-sm-6">
-				<mat-form-field class="col-12">
-					<mat-select placeholder="Hora de termino" name="horaTermino" ngModel>
-						<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
-							{{ hora.viewValue }}
-						</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</div>
-			<div class="col-12 col-md-12">
-				<button (click)="onClick()" class="btn btn-rosa col-12">GUARDAR</button>
+			<div class="row">
+				<div class="col-12 col-sm-6">
+					<mat-form-field class="col-12">
+						<mat-select placeholder="Hora de inicio" name="horaInicio" ngModel>
+							<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
+								{{ hora.viewValue }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div class="col-12 col-sm-6">
+					<mat-form-field class="col-12">
+						<mat-select placeholder="Hora de termino" name="horaTermino" ngModel>
+							<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
+								{{ hora.viewValue }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+				<div class="col-12 col-md-12">
+					<button (click)="onClick()" class="btn btn-rosa col-12">GUARDAR</button>
+				</div>
 			</div>
 		</div>
-	</div>
-</form>
+	</form>
+	<br>
+</div>

@@ -16,16 +16,20 @@ export class UserService {
 
     constructor(private angularFirestore: AngularFirestore) {
 		this.userCollection = this.angularFirestore.collection<UserParsing>('users');
-        this.userInfo = this.userCollection.stateChanges().pipe(
-            map(actions => actions.map(a => {
-                const data = a.payload.doc.data() as any;
-                return { data };
-            }))
-        )
-    	this.userInfo.subscribe((d:UserParsing) => {this.status = d.status;});
+        // this.userInfo = this.userCollection.stateChanges().pipe(
+        //     map(actions => actions.map(a => {
+        //         const data = a.payload.doc.data() as any;
+        //         return { data };
+        //     }))
+        // )
+    	// this.userInfo.subscribe((d:UserParsing) => {this.status = d.status;});
     }
 
 	getStatus(uid: string) {
         return this.angularFirestore.collection('users').doc<UserParsing>(uid);
 	}
+    
+    getPlanU(uid: string) {
+        return this.angularFirestore.collection('users').doc<UserParsing>(uid);
+    }
 }

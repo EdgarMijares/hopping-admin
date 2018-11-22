@@ -4,6 +4,7 @@ import { MyHopData } from '../../models/models';
 // SERVICES
 import { AuthService } from '../../services/auth.service';
 import { MyhopService } from '../../services/myhop.service';
+import { UserService } from '../../services/user.service';
 import { DialogsService } from '../../services/dialogs.service';
 @Component({
   selector: 'app-myhop',
@@ -39,33 +40,37 @@ export class MyhopComponent implements OnInit {
     {value: '03', viewValue: '03:00'}
 	];
 
+    private plan:string;
+
   // private hopData:MyHopData[];
-  constructor(private _myhopService: MyhopService, private _authService: AuthService, private _dialog: DialogsService) {
-		// this._authService.getUID();
+    constructor(private _myhopService: MyhopService, private _authService: AuthService, private _user: UserService) {
+    	// this._authService.getUID();
     // this._myhopService.getHopData('Io5TCKVrfNM47Lk3l1SjDj8DVOo2').subscribe(data => {
     //   this.hopData = data;
     //   console.log(data)
     // });
-	}
+    }
 
-  ngOnInit() {
+    ngOnInit() {
+        this._authService.getUID().subscribe(user => {
+            this._user.getPlanU(user.uid).valueChanges().subscribe( plan => { this.plan = plan.plan.tipo_plan })
+        })
+    }
 
-	}
-
-	showList(item) {
+    showList(item) {
     // this.weekReservacion.push(item);
-  }
+    }
 
-	getData(data:MyHopData) {
+    getData(data:MyHopData) {
     // console.log(data)
-	}
+    }
 
-  onClick(){
+    onClick(){
     // console.log(this.hopData)
-  }
+    }
 }
 
 export interface Hora {
-  value: string;
-  viewValue: string;
+    value: string;
+    viewValue: string;
 }
