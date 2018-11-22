@@ -26,6 +26,11 @@ export interface UserParsing {
 		estado: string;
 		municipio: string;
 		cp: string;
+	},
+	plan: {
+		fecha_inicio: string;
+		fecha_fin: string;
+		tipo_plan: string;
 	}
 }
 
