@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { MyHopData } from '../../models/models';
 import { Lugar } from '../../models/lugar';
 // DIALOGS
@@ -14,9 +15,16 @@ import { DialogsService } from '../../services/dialogs.service';
   styles: []
 })
 export class MyhopComponent implements OnInit {
-
+    obj:NgForm;
+    objeto:NgForm[] = [];
 	weekServicio:string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-    weekReservacion:Array<any> = [true, true, true, true, true, true, true];
+    weekReservacion:Array<any> = [
+        [true, true, true, true, true, true, true],
+        [true, true, true, true, true, true, true],
+        [true, true, true, true, true, true, true],
+        [true, true, true, true, true, true, true],
+        [true, true, true, true, true, true, true]
+    ];
     lunes = false;
     horas: Hora[] = [
 		{value: '7', viewValue: '07:00'},
@@ -43,8 +51,9 @@ export class MyhopComponent implements OnInit {
     ];
 
     private plan:string;
-    private noHops:number;
-  // private hopData:MyHopData[];
+    private noHops;
+    private hopData:MyHopData[];
+
     constructor(private _myhopService: MyhopService, private _authService: AuthService, private _user: UserService) {
     	// this._authService.getUID();
     // this._myhopService.getHopData('Io5TCKVrfNM47Lk3l1SjDj8DVOo2').subscribe(data => {
@@ -58,9 +67,9 @@ export class MyhopComponent implements OnInit {
             this._user.getPlanU(user.uid).valueChanges().subscribe( plan => {
                 this.plan = plan.plan.tipo_plan;
                 switch (plan.plan.tipo_plan) {
-                    case 'doble': this.noHops = 2; break;
-                    case 'triple': this.noHops = 3; break;
-                    case 'gold': this.noHops = 4; break;
+                    case 'doble':   this.noHops = [{}, {}]; break;
+                    case 'triple':  this.noHops = [{}, {}, {}]; break;
+                    case 'gold':    this.noHops = [{}, {}, {}, {}, {}]; break;
                 }
                 console.log(this.noHops)
             });
@@ -69,16 +78,16 @@ export class MyhopComponent implements OnInit {
         })
     }
 
-    showList(item) {
+    showList(row, item) {
         // this.weekReservacion.push(item);
         // !this.lunes
         // console.log(this.weekReservacion[item]);
-        this.weekReservacion[item] = !this.weekReservacion[item]
+        this.weekReservacion[row][item] = !this.weekReservacion[row][item]
         // console.log(this.weekReservacion[item]);
 
     }
 
-    getData(data:MyHopData) {
+    getData(data:MyHopData, i?:number) {
         let parsing = {
             'dias_de_servicio': {
                 'apertura': data.horaApertura,
@@ -105,8 +114,8 @@ export class MyhopComponent implements OnInit {
         }
     }
 
-    onClick(){
-    //     console.log()
+    onClick(i){
+        console.log(i)
     }
 }
 

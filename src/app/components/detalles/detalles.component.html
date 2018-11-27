@@ -1,32 +1,33 @@
 <h1 class="text-center">Detalles de cuenta</h1>
 <hr>
-<div class="containe animated fadeIn">
-  <div class="row">
-    <div class="col-12 col-sm-4 padding-image">
-      <img class="img-fluid" src="/assets/hopping/imagotipo_hopping.png" alt="">
+<div class="container animated fadeIn">
+    <div class="row">
+        <div class="col-12 col-sm-4 padding-image">
+            <img class="img-fluid" src="/assets/hopping/imagotipo_hopping.png" alt="">
+            <button class="btn btn-rosa btn-sm col-12">Cambiar imagen</button>
+        </div>
+        <div class="col-12 col-sm-8">
+            <mat-form-field class="col-12">
+                <input matInput placeholder="Nombre del lugar" vale="name">
+            </mat-form-field>
+            <mat-form-field class="col-12">
+                <input matInput placeholder="Numero de concato" vale="name">
+            </mat-form-field>
+            <mat-form-field class="col-12">
+                <textarea matInput placeholder="Descripcion del lugar" vale="name"></textarea>
+            </mat-form-field>
+        </div>
     </div>
-    <div class="col-12 col-sm-8">
-      <mat-form-field class="col-12">
-        <input matInput placeholder="Nombre del lugar" vale="name">
-      </mat-form-field>
-      <mat-form-field class="col-12">
-        <input matInput placeholder="Numero de concato" vale="name">
-      </mat-form-field>
-      <mat-form-field class="col-12">
-        <textarea matInput placeholder="Descripcion del lugar" vale="name"></textarea>
-      </mat-form-field>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+                <!-- <agm-marker [latitude]="lat" [longitude]="lng">
+                    <agm-info-window>
+                        <p>Lorem ipsum dolor.</p>
+                    </agm-info-window>
+                </agm-marker> -->
+            </agm-map>
+        </div>
     </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-12">
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
-            <!-- <agm-marker [latitude]="lat" [longitude]="lng">
-                <agm-info-window>
-                    <p>Lorem ipsum dolor.</p>
-                </agm-info-window>
-            </agm-marker> -->
-        </agm-map>
-    </div>
-  </div>
 </div>
