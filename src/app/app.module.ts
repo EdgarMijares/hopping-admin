@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-// import { AngularFireStorageModule } from "@angular/fire/firestorege";
+import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // SERVICES
@@ -109,7 +109,7 @@ import { PricingComponent } from './components/pricing/pricing.component';
         }),
         AngularFireModule.initializeApp(environment.firebase),
         AngularFirestoreModule,
-        // AngularFireStorageModule,
+        AngularFireStorageModule,
         AngularFireAuthModule
     ],
 	entryComponents: [

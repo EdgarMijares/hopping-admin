@@ -113,13 +113,13 @@
 			<br>
 			<div class="row">
 				<div class="col col-6  col-sm-3" *ngFor="let item of weekServicio; let i = index">
-					<mat-checkbox ngModel disabled="lunes" name="{{ item | lowercase }}Reservacion" *ngIf="item!=''">{{ item }}</mat-checkbox>
+					<mat-checkbox ngModel [disabled]="weekReservacion[i]" name="{{ item | lowercase }}Reservacion">{{ item }}</mat-checkbox>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-12 col-sm-6">
 					<mat-form-field class="col-12">
-						<mat-select placeholder="Hora de inicio" name="horaInicio" ngModel>
+						<mat-select placeholder="Hora de inicio" name="reservacionInicio" ngModel>
 							<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
 								{{ hora.viewValue }}
 							</mat-option>
@@ -128,7 +128,7 @@
 				</div>
 				<div class="col-12 col-sm-6">
 					<mat-form-field class="col-12">
-						<mat-select placeholder="Hora de termino" name="horaTermino" ngModel>
+						<mat-select placeholder="Hora de termino" name="reservacionTermino" ngModel>
 							<mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
 								{{ hora.viewValue }}
 							</mat-option>

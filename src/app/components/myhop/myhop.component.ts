@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MyHopData } from '../../models/models';
+import { Lugar } from '../../models/lugar';
 // DIALOGS
 // SERVICES
 import { AuthService } from '../../services/auth.service';
 import { MyhopService } from '../../services/myhop.service';
 import { UserService } from '../../services/user.service';
 import { DialogsService } from '../../services/dialogs.service';
+
 @Component({
   selector: 'app-myhop',
   templateUrl: './myhop.component.html',
@@ -14,7 +16,7 @@ import { DialogsService } from '../../services/dialogs.service';
 export class MyhopComponent implements OnInit {
 
 	weekServicio:string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-    weekReservacion:Array<any> = [false, false, false, false, false, false, false];
+    weekReservacion:Array<any> = [true, true, true, true, true, true, true];
     lunes = false;
     horas: Hora[] = [
 		{value: '7', viewValue: '07:00'},
@@ -69,15 +71,38 @@ export class MyhopComponent implements OnInit {
 
     showList(item) {
         // this.weekReservacion.push(item);
-        !this.lunes
-        console.log(this.weekReservacion[item]);
-        !this.weekReservacion[item]
-        console.log(this.weekReservacion[item]);
+        // !this.lunes
+        // console.log(this.weekReservacion[item]);
+        this.weekReservacion[item] = !this.weekReservacion[item]
+        // console.log(this.weekReservacion[item]);
 
     }
 
     getData(data:MyHopData) {
-        console.log(data)
+        let parsing = {
+            'dias_de_servicio': {
+                'apertura': data.horaApertura,
+                'cierre':   data.horaCierre ,
+                'lunes':    data.lunesServicio ,
+                'martes':   data.martesServicio ,
+                'miercoles':data.miercolesServicio ,
+                'jueves':   data.juevesServicio ,
+                'viernes':  data.viernesServicio ,
+                'sabado':   data.sabadoServicio ,
+                'domingo':  data.domingoServicio
+            },
+            'dias_de_reservacion': {
+                'apertura': data.reservacionInicio ,
+                'cierre':   data.reservacionTermino ,
+                'lunes':    data.lunesReservacion ,
+                'martes':   data.martesReservacion ,
+                'miercoles':data.miercolesReservacion ,
+                'jueves':   data.juevesReservacion ,
+                'viernes':  data.viernesReservacion ,
+                'sabado':   data.sabadoReservacion ,
+                'domingo':  data.domingoReservacion
+            }
+        }
     }
 
     onClick(){

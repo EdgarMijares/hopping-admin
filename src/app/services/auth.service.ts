@@ -82,7 +82,7 @@ export class AuthService {
       this._angularFireAuth.auth
       .signInWithPopup(provider)
         .then(res => {
-          (res.additionalUserInfo.isNewUser)?
+                (res.additionalUserInfo.isNewUser)?
 						this.saveUser(res.user.uid, this.parsingUser(res.additionalUserInfo.profile, 'f', res.user.refreshToken))  :
 						this.updateToken(res.user.uid, res.user.refreshToken)
           resolve(res);

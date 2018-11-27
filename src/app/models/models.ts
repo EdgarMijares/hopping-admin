@@ -67,27 +67,23 @@ export interface UserFacebook {
 
 export interface MyHopData {
 	horaApertura: string;
-  horaCierre: string;
-  inicioHora: string;
-  inicioTermino: string;
-	sercio: {
-		lunesServicio: boolean;
-	  martesServicio: boolean;
-	  miercolesServicio: boolean;
-	  juevesServicio: boolean;
-	  viernesServicio: boolean;
-	  sabadoServicio: boolean;
-	  domingoServicio: boolean;
-	}
-	reservacion: {
-		lunesReservacion: boolean;
-	  martesReservacion: boolean;
-	  miercolesReservacion: boolean;
-	  juevesReservacion: boolean;
-	  viernesReservacion: boolean;
-	  sabadoReservacion: boolean;
-	  domingoReservacion: boolean;
-	}
+	horaCierre: string;
+	reservacionInicio: string;
+	reservacionTermino: string;
+	lunesServicio: boolean;
+	martesServicio: boolean;
+	miercolesServicio: boolean;
+	juevesServicio: boolean;
+	viernesServicio: boolean;
+	sabadoServicio: boolean;
+	domingoServicio: boolean;
+	lunesReservacion: boolean;
+	martesReservacion: boolean;
+	miercolesReservacion: boolean;
+	juevesReservacion: boolean;
+	viernesReservacion: boolean;
+	sabadoReservacion: boolean;
+	domingoReservacion: boolean;
 }
 
 export interface HopZone {
