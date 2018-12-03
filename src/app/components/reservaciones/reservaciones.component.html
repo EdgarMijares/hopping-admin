@@ -1,35 +1,4 @@
 <h1 class="text-center">Reservaciones</h1>
 <div class="container animated fadeIn">
-  <div class="row">
-    <mat-form-field class="col-12 col-md-6">
-      <input matInput placeholder="Buscar" value="">
-    </mat-form-field>
-    <hr>
-    <div class="col-12 col-md-6 text-right">
-      <h4>Fecha: {{'2018-05-10' | date:'dd/MM/yyyy'}}</h4>
-    </div>
-
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th class="text-center" scope="col">NOMBRE</th>
-            <th class="text-center" scope="col">PERSONAS</th>
-            <th class="text-center" scope="col">STATUS</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let item of reservaciones">
-          <tr>
-            <td>{{ item.reservacion.nombre }}</td>
-            <td class="text-center">{{ item.reservacion.no_personas }}</td>
-            <td class="text-center">
-              <button mat-button color="accent" *ngIf="!item.reservacion.status">Aceptar</button>
-              <button mat-button color="accent" disabled *ngIf="item.reservacion.status">Aceptado</button>
-						</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-		<button class="btn btn-rosa btn-sm col-6 mt-0 mb-1">Confirmar</button>
-  </div>
+    <app-reservacion></app-reservacion>
 </div>
