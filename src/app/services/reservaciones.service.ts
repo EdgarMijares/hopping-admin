@@ -26,7 +26,7 @@ export class ReservacionesService {
 		this.reservaciones.subscribe(data => console.log(data));
   }
 
-	getReservaciones() {
-		return this.reservaciones;
+	getReservaciones(uid: string) {
+		return this.angularFirestore.collection<Reservaciones>('Reservaciones').doc(uid);
 	}
 }

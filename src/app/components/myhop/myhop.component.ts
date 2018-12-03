@@ -73,7 +73,6 @@ export class MyhopComponent implements OnInit {
                     case 'triple':  this.noHops = [{}, {}, {}]; break;
                     case 'gold':    this.noHops = [{}, {}, {}, {}, {}]; break;
                 }
-                console.log(this.noHops)
             });
             // this.noHops = this._user.getPlanAcces(user.uid);
             // console.log(this._user.getPlanAcces(user.uid))

@@ -50,6 +50,7 @@
   -webkit-transform: translate(-50%, -50%);
 }
 
+
 agm-map {
 	height: 400px;
 }
@@ -92,4 +93,10 @@ agm-map {
 
 .fadeIn {
   animation-name: fadeIn;
+}
+
+@media only screen and (max-width: 800px){
+	.detalles-profile {
+		padding: 10%
+	}
 }
