@@ -10,13 +10,17 @@ import { Reservaciones } from '../../models/models';
 })
 export class ReservacionesComponent implements OnInit {
 
-	private reservaciones: Reservaciones[];
-  constructor(private _reservacionesService: ReservacionesService) { }
+	reservaciones: Reservaciones[];
+    constructor(private _reservacionesService: ReservacionesService) {
+      this._reservacionesService.getReservaciones().subscribe(reservaciones => {
+          this.reservaciones = reservaciones;
+      });
+    }
 
-  ngOnInit() {
-		this._reservacionesService.getReservaciones().subscribe(reservaciones => {
-			this.reservaciones = reservaciones;
-		});
-  }
+    ngOnInit() {
+    	// this._reservacionesService.getReservaciones().subscribe(reservaciones => {
+    	// 	this.reservaciones = reservaciones;
+    	// });
+    }
 
 }

@@ -1,35 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MyHopData } from '../../models/models';
-import { Lugar } from '../../models/lugar';
-// DIALOGS
-// SERVICES
-import { AuthService } from '../../services/auth.service';
-import { MyhopService } from '../../services/myhop.service';
-import { UserService } from '../../services/user.service';
-import { DialogsService } from '../../services/dialogs.service';
 
 @Component({
-  selector: 'app-myhop',
-  templateUrl: './myhop.component.html',
-  styles: []
+  selector: 'app-my-hop',
+  templateUrl: './my-hop.component.html'
 })
-export class MyhopComponent implements OnInit {
-    obj:NgForm;
-    objeto:NgForm[] = [];
-	weekServicio:string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
-    weekReservacion:Array<any> = [
-        [true, true, true, true, true, true, true],
-        [true, true, true, true, true, true, true],
+export class MyHopComponent implements OnInit {
+    weekServicio:string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
+
+    private weekReservacion:Array<any> = [
         [true, true, true, true, true, true, true],
         [true, true, true, true, true, true, true],
         [true, true, true, true, true, true, true],
         [true, true, true, true, true, true, true],
         [true, true, true, true, true, true, true]
     ];
-    lunes = false;
+
     horas: Hora[] = [
-		{value: '7', viewValue: '07:00'},
+        {value: '7', viewValue: '07:00'},
         {value: '8', viewValue: '08:00'},
         {value: '9', viewValue: '09:00'},
         {value: '10', viewValue: '10:00'},
@@ -52,44 +40,20 @@ export class MyhopComponent implements OnInit {
         {value: '03', viewValue: '03:00'}
     ];
 
-    private plan:string;
-    private noHops;
-    private hopData:MyHopData[];
+    constructor() { }
 
-    constructor(private _myhopService: MyhopService, private _authService: AuthService, private _user: UserService) {
-    	// this._authService.getUID();
-    // this._myhopService.getHopData('Io5TCKVrfNM47Lk3l1SjDj8DVOo2').subscribe(data => {
-    //   this.hopData = data;
-    //   console.log(data)
-    // });
-    }
+    ngOnInit() { }
 
-    ngOnInit() {
-        this._authService.getUID().subscribe(user => {
-            this._user.getPlanU(user.uid).valueChanges().subscribe( plan => {
-                this.plan = plan.plan.tipo_plan;
-                switch (plan.plan.tipo_plan) {
-                    case 'doble':   this.noHops = [{}, {}]; break;
-                    case 'triple':  this.noHops = [{}, {}, {}]; break;
-                    case 'gold':    this.noHops = [{}, {}, {}, {}, {}]; break;
-                }
-                console.log(this.noHops)
-            });
-            // this.noHops = this._user.getPlanAcces(user.uid);
-            // console.log(this._user.getPlanAcces(user.uid))
-        })
+    onClick(i){
+        console.log(i)
     }
 
     showList(row, item) {
-        // this.weekReservacion.push(item);
-        // !this.lunes
-        // console.log(this.weekReservacion[item]);
-        this.weekReservacion[row][item] = !this.weekReservacion[row][item]
-        // console.log(this.weekReservacion[item]);
-
+        console.log(this.weekReservacion[row][item])
+        this.weekReservacion[row][item] = !this.weekReservacion[row][item];
     }
 
-    getData(data:MyHopData, i?:number) {
+    getData(data:any, i?:number) {
         let parsing = {
             'dias_de_servicio': {
                 'apertura': data.horaApertura,
@@ -114,10 +78,6 @@ export class MyhopComponent implements OnInit {
                 'domingo':  data.domingoReservacion
             }
         }
-    }
-
-    onClick(i){
-        console.log(i)
     }
 }
 

@@ -51,7 +51,11 @@
 }
 
 agm-map {
-	height: 300px;
+	height: 400px;
+}
+
+.fa {
+	margin: 0 10px;
 }
 
 
