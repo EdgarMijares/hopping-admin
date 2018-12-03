@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-12 col-sm-4 padding-image">
+        <img class="img-fluid" src="/assets/hopping/imagotipo_hopping.png" alt="" style="max-width: 200px">
+        <button class="btn btn-rosa btn-sm col-12"><span class="fa fa-camera"></span> Cambiar imagen</button>
+    </div>
+    <div class="col-12 col-sm-8">
+        <mat-form-field class="col-12">
+            <input matInput color="accent" placeholder="Nombre del lugar" vale="name">
+        </mat-form-field>
+        <mat-form-field class="col-12">
+            <input matInput color="accent" placeholder="Numero de concato" vale="name">
+        </mat-form-field>
+        <mat-form-field class="col-12">
+            <textarea matInput color="accent" placeholder="Descripcion del lugar" vale="name"></textarea>
+        </mat-form-field>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-12">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="12">
+            <!-- <agm-marker [latitude]="lat" [longitude]="lng">
+                <agm-info-window>
+                    <p>Lorem ipsum dolor.</p>
+                </agm-info-window>
+            </agm-marker> -->
+        </agm-map>
+    </div>
+</div>
