@@ -129,7 +129,7 @@ export class AuthService {
         .catch(error => console.log(error));
     }
 
-    updatePlan( tipo_plan : string) {
+    updatePlan( tipo_plan : string ) {
         let date = new Date();
         let dia = date.getDate();
         let mes = date.getMonth() + 1;

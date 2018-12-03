@@ -63,6 +63,11 @@ import { NormalComponent } from './dialog/normal/normal.component';
 import { NewhopComponent } from './dialog/newhop/newhop.component';
 import { PricingComponent } from './components/pricing/pricing.component';
 import { MyHopComponent } from './fragments/my-hop/my-hop.component';
+import { DetalleComponent } from './fragments/detalle/detalle.component';
+import { ReservacionComponent } from './fragments/reservacion/reservacion.component';
+import { PromocionComponent } from './fragments/promocion/promocion.component';
+import { GaleriaFragmentComponent } from './fragments/galeria-fragment/galeria-fragment.component';
+import { FeedFragmentComponent } from './fragments/feed-fragment/feed-fragment.component';
 
 @NgModule({
     declarations: [
@@ -82,7 +87,12 @@ import { MyHopComponent } from './fragments/my-hop/my-hop.component';
         NormalComponent,
         NewhopComponent,
         PricingComponent,
-        MyHopComponent
+        MyHopComponent,
+        DetalleComponent,
+        ReservacionComponent,
+        PromocionComponent,
+        GaleriaFragmentComponent,
+        FeedFragmentComponent
     ],
     imports: [
         HttpModule,
