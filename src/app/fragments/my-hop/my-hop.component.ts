@@ -1,20 +1,17 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { NgForm } from '@angular/forms';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserParsing } from '../../models/models';
 @Component({
   selector: 'app-my-hop',
   templateUrl: './my-hop.component.html'
 })
 export class MyHopComponent implements OnInit {
+
+    data:FormGroup;
+
     weekServicio:string[] = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo'];
 
-    private weekReservacion:Array<any> = [
-        [true, true, true, true, true, true, true],
-        [true, true, true, true, true, true, true],
-        [true, true, true, true, true, true, true],
-        [true, true, true, true, true, true, true],
-        [true, true, true, true, true, true, true]
-    ];
+    private weekReservacion:Array<any> = [true, true, true, true, true, true, true];
 
     horas: Hora[] = [
         {value: '7', viewValue: '07:00'},
@@ -42,42 +39,91 @@ export class MyHopComponent implements OnInit {
 
     constructor() { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        this.data = new FormGroup({
+            'dias_de_servicio' : new FormGroup({
+                'apertura':     new FormControl('7'),
+                'cierre':       new FormControl('7'),
+                'lunes':        new FormControl(false),
+                'martes':       new FormControl(false),
+                'miercoles':    new FormControl(false),
+                'jueves':       new FormControl(false),
+                'viernes':      new FormControl(false),
+                'sabado':       new FormControl(false),
+                'domingo':      new FormControl(false)
+            }),
+            'dias_de_reservacion' : new FormGroup({
+                'apertura':     new FormControl('7'),
+                'cierre':       new FormControl('7'),
+                'lunes':        new FormControl(false),
+                'martes':       new FormControl(false),
+                'miercoles':    new FormControl(false),
+                'jueves':       new FormControl(false),
+                'viernes':      new FormControl(false),
+                'sabado':       new FormControl(false),
+                'domingo':      new FormControl(false)
+                // 'lunes':        new FormControl({value: false, disabled: true}, Validators.required),
+                // 'martes':       new FormControl({value: false, disabled: true}, Validators.required),
+                // 'miercoles':    new FormControl({value: false, disabled: true}, Validators.required),
+                // 'jueves':       new FormControl({value: false, disabled: true}, Validators.required),
+                // 'viernes':      new FormControl({value: false, disabled: true}, Validators.required),
+                // 'sabado':       new FormControl({value: false, disabled: true}, Validators.required),
+                // 'domingo':      new FormControl({value: false, disabled: true}, Validators.required)
+            })
+        });
+    }
+// 2500
+// 4500
+// 9500
+// 280
+// 5005
+
+
 
     onClick(i){
-        console.log(i)
+        // console.log(i)
+        console.log("MES")
     }
 
-    showList(row, item) {
-        console.log(this.weekReservacion[row][item])
-        this.weekReservacion[row][item] = !this.weekReservacion[row][item];
+    showList(row) {
+        // this.weekReservacion[row] = !this.data.get('dias_de_servicio.lunes').value;
+        this.weekReservacion[row] = !this.weekReservacion[row];
+        // (this.data.controls['dias_de_reservacion'].get('lunes').value) ?
+            // this.data.controls['dias_de_reservacion'].get(this.weekServicio[row].toString().toLowerCase()).enable()
+            // console.log(this.data.controls['dias_de_reservacion'].get(this.weekServicio[row].toString().toLowerCase()).disable())
+            // :
+            // this.data.controls['dias_de_reservacion'].get(this.weekServicio[row].toString().toLowerCase()).disable()
+        //     console.log(this.data.controls['dias_de_reservacion'].get(this.weekServicio[row].toString().toLowerCase()).enable())
+        //
+        // console.log()
     }
 
-    getData(data:any, i?:number) {
-        let parsing = {
-            'dias_de_servicio': {
-                'apertura': data.horaApertura,
-                'cierre':   data.horaCierre ,
-                'lunes':    data.lunesServicio ,
-                'martes':   data.martesServicio ,
-                'miercoles':data.miercolesServicio ,
-                'jueves':   data.juevesServicio ,
-                'viernes':  data.viernesServicio ,
-                'sabado':   data.sabadoServicio ,
-                'domingo':  data.domingoServicio
-            },
-            'dias_de_reservacion': {
-                'apertura': data.reservacionInicio ,
-                'cierre':   data.reservacionTermino ,
-                'lunes':    data.lunesReservacion ,
-                'martes':   data.martesReservacion ,
-                'miercoles':data.miercolesReservacion ,
-                'jueves':   data.juevesReservacion ,
-                'viernes':  data.viernesReservacion ,
-                'sabado':   data.sabadoReservacion ,
-                'domingo':  data.domingoReservacion
-            }
-        }
+    getData() {
+        // let parsing = {
+        //     'dias_de_servicio': {
+        //         'apertura': data.horaApertura,
+        //         'cierre':   data.horaCierre ,
+        //         'lunes':    data.lunesServicio ,
+        //         'martes':   data.martesServicio ,
+        //         'miercoles':data.miercolesServicio ,
+        //         'jueves':   data.juevesServicio ,
+        //         'viernes':  data.viernesServicio ,
+        //         'sabado':   data.sabadoServicio ,
+        //         'domingo':  data.domingoServicio
+        //     },
+        //     'dias_de_reservacion': {
+        //         'apertura': data.reservacionInicio ,
+        //         'cierre':   data.reservacionTermino ,
+        //         'lunes':    data.lunesReservacion ,
+        //         'martes':   data.martesReservacion ,
+        //         'miercoles':data.miercolesReservacion ,
+        //         'jueves':   data.juevesReservacion ,
+        //         'viernes':  data.viernesReservacion ,
+        //         'sabado':   data.sabadoReservacion ,
+        //         'domingo':  data.domingoReservacion
+        //     }
+        // }
+        console.log(this.data.value)
     }
 }
 

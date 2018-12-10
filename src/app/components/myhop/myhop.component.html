@@ -1,19 +1,21 @@
 <h1 class="text-center">Mi Hop</h1>
 <hr>
-<div *ngIf="plan != 'simple'">
-	<mat-accordion  *ngFor="let hop of noHops; let i_global = index">
-		<mat-expansion-panel>
-			<mat-expansion-panel-header>
-				<mat-panel-title>DIRECCION</mat-panel-title>
-				<mat-panel-description>DESCRIPCION</mat-panel-description>
-			</mat-expansion-panel-header>
-			<div class="">
-				<app-my-hop></app-my-hop>
-			</div>
-		</mat-expansion-panel>
-		<br>
-	</mat-accordion>
-</div>
-<div *ngIf="plan === 'simple'">
-
+<div class="animated fadeIn">
+	<div *ngIf="noHops?.length > 1">
+		<mat-accordion  *ngFor="let hop of noHops; let i_global = index">
+			<mat-expansion-panel >
+				<mat-expansion-panel-header>
+					<mat-panel-title>DIRECCION</mat-panel-title>
+					<mat-panel-description>DESCRIPCION</mat-panel-description>
+				</mat-expansion-panel-header>
+				<div class="">
+					<app-my-hop></app-my-hop>
+				</div>
+			</mat-expansion-panel>
+			<br>
+		</mat-accordion>
+	</div>
+	<div *ngIf="noHops?.length == 1">
+		<app-my-hop></app-my-hop>
+	</div>
 </div>

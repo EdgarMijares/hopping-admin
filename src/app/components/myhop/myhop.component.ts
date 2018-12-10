@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MyHopData } from '../../models/models';
-import { Lugar } from '../../models/lugar';
 // DIALOGS
 // SERVICES
 import { AuthService } from '../../services/auth.service';
-import { MyhopService } from '../../services/myhop.service';
-import { UserService } from '../../services/user.service';
+import { PlanService } from '../../services/plan.service';
 import { DialogsService } from '../../services/dialogs.service';
 
 @Component({
@@ -52,40 +50,20 @@ export class MyhopComponent implements OnInit {
         {value: '03', viewValue: '03:00'}
     ];
 
-    private plan:string;
-    private noHops;
-    private hopData:MyHopData[];
+    noHops;
 
-    constructor(private _myhopService: MyhopService, private _authService: AuthService, private _user: UserService) {
-    	// this._authService.getUID();
-    // this._myhopService.getHopData('Io5TCKVrfNM47Lk3l1SjDj8DVOo2').subscribe(data => {
-    //   this.hopData = data;
-    //   console.log(data)
-    // });
-    }
+    constructor(private _authService: AuthService, private _planService: PlanService) { }
 
     ngOnInit() {
         this._authService.getUID().subscribe(user => {
-            this._user.getPlanU(user.uid).valueChanges().subscribe( plan => {
-                this.plan = plan.plan.tipo_plan;
-                switch (plan.plan.tipo_plan) {
-                    case 'doble':   this.noHops = [{}, {}]; break;
-                    case 'triple':  this.noHops = [{}, {}, {}]; break;
-                    case 'gold':    this.noHops = [{}, {}, {}, {}, {}]; break;
-                }
-            });
-            // this.noHops = this._user.getPlanAcces(user.uid);
-            // console.log(this._user.getPlanAcces(user.uid))
+            this._planService.getPlan(user.uid).subscribe(plan => {
+                this.noHops = plan;
+            })
         })
     }
 
-    showList(row, item) {
-        // this.weekReservacion.push(item);
-        // !this.lunes
-        // console.log(this.weekReservacion[item]);
-        this.weekReservacion[row][item] = !this.weekReservacion[row][item]
-        // console.log(this.weekReservacion[item]);
-
+    showList(row) {
+        this.weekReservacion[row] = !this.weekReservacion[row]
     }
 
     getData(data:MyHopData, i?:number) {

@@ -6,30 +6,21 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class PlanService {
-    private plan;
+    private planCostumer: AngularFirestoreCollection<UserParsing>;
     constructor(private _angularFirestore: AngularFirestore) {
-        // this.plan = this._angularFirestore
-        //     .collection<UserParsing>('users').stateChanges().pipe(
-        //         map(actions => actions.map(data => {
-        //             return (data.payload.doc.data() as UserParsing).plan;
-        //             // return plan.plan;
-        //         }))
-        //     );
+        this.planCostumer = this._angularFirestore.collection<UserParsing>('users');
+
     }
 
     getPlan(uid: string){
-        // return this._angularFirestore.collection('users').doc(uid).valueChanges()
-        //     .subscribe((data: UserParsing) => {
-                // console.log(data)
-                // switch(data.plan.tipo_plan) {
-                //     case 'doble':   return [{}, {}]; break;
-                //     case 'triple':  return [{}, {}, {}]; break;
-                //     case 'gold':    return [{}, {}, {}, {}, {}]; break;
-                // }
-            //     return data;
-            // });
-        return this._angularFirestore.collection('users').doc(uid).valueChanges()
-            .pipe(map(actions => console.log(actions)));
+        return this.planCostumer.doc(uid).snapshotChanges().pipe(map(action => {
+            switch((action.payload.data() as UserParsing).plan.tipo_plan) {
+                case 'simple':   return [{}];
+                case 'doble':   return [{}, {}];
+                case 'triple':  return [{}, {}, {}];
+                case 'gold':    return [{}, {}, {}, {}, {}];
+                default: return null;
+            }
+        }));
     }
-
 }
