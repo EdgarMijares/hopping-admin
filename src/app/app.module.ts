@@ -11,6 +11,7 @@ import { AngularFireStorageModule } from "@angular/fire/storage";
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
 // SERVICES
+import { ResponsiveService } from './services/responsive.service';
 import { AuthService } from './services/auth.service';
 import { DialogsService } from './services/dialogs.service';
 import { MunicipiosService } from './services/municipios.service';
@@ -130,7 +131,8 @@ import { FeedFragmentComponent } from './fragments/feed-fragment/feed-fragment.c
 		NewhopComponent
 	],
     providers: [
-		//SERVICES
+        //SERVICES
+        ResponsiveService,
         AuthService,
 		ReservacionesService,
         MunicipiosService,
