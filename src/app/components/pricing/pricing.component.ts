@@ -20,11 +20,11 @@ export class PricingComponent implements OnInit {
     ngOnInit() { }
 
     updateStatus() {
-        this._authService.getUID().subscribe(id => {
-            if(id != null) {
-                this._angularFirestore.collection('users').doc(id.uid).update({status: 2})
-            }
-        })
+        // this._authService.getUID().subscribe(id => {
+        //     if(id != null) {
+        //         this._angularFirestore.collection('users').doc(id.uid).update({status: 2})
+        //     }
+        // })
     }
 
     subscribePlan(plan_tipo) {

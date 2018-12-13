@@ -5,6 +5,10 @@
 	margin-bottom: 10px
 }
 
+.upper-text {
+	text-transform: uppercase;
+}
+
 .button-social {
 	margin: 20px;
 	font-size: 25px;

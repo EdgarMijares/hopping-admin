@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
 
-import { UserParsing, UserGoogle, UserFacebook } from '../models/models';
+import { User, UserGoogle, UserFacebook } from '../models/user';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -16,7 +16,7 @@ export class AuthService {
 
 	user: Observable<firebase.User>;
 	status: boolean;
-	info_user: UserParsing;
+	info_user: User;
 
   constructor(private _angularFireAuth: AngularFireAuth,
     private _angularFirestore: AngularFirestore,
@@ -117,13 +117,13 @@ export class AuthService {
 		return this.user;
 	}
 
-  saveUser(id:string, user:any) {
+  saveUser( id:string, user:any ) {
     this._angularFirestore.collection('users').doc(id).set(user)
       // .then(status => console.log(status))
       .catch(error => console.log(error));
   }
 
-	updateToken(id:string, token:string) {
+	updateToken( id:string, token:string ) {
         this._angularFirestore.collection('users').doc(id).update({token: token})
         // .then(status => console.log(status))
         .catch(error => console.log(error));
@@ -139,17 +139,34 @@ export class AuthService {
         if ( (mes + 1) > 12 ) { ano += 1; mes = 0; }
         if(dia == 31) { dia = 30 }
 
+        let lugares;
+        if( tipo_plan === 'simple')
+            lugares = 1
+        else if( tipo_plan === 'doble')
+            lugares = 2
+        else if( tipo_plan === 'triple')
+            lugares = 3
+        else if( tipo_plan === 'gold')
+            lugares = 5
+
+
+
         let fin = dia + '/' + (mes + 1) + '/' + ano;
         this.getUID().subscribe(data => {
             this._angularFirestore.collection('users').doc(data.uid).update({status: 2, plan:{ inicio, fin, tipo_plan}});
+            for (let i = 1; i <= lugares; i++) {
+                const id:string = 'HOP' + i
+                // const data =
+                // this._angularFirestore.collection('lugares').doc(data.uid.substr(0, 6)).collection(id).doc();
+            }
         })
     }
 
-	getUserData(uid:string) {
+	getUserData( uid:string ) {
 		return this._angularFirestore.collection('users').doc(uid).get();
 	}
 
-    parsingUser(res:Object, type:string, token:string):UserParsing {
+    parsingUser( res:Object, type:string, token:string ):User {
         switch(type) {
             case 'g': {
                 let userData:UserGoogle = res as UserGoogle;
@@ -162,25 +179,15 @@ export class AuthService {
         }
     }
 
-	userParsing(user:UserFacebook|UserGoogle, token:string):UserParsing {
+	userParsing( user:UserFacebook|UserGoogle, token:string ):User {
 		return {
-			'nombre' : user.name,
-			'email' : user.email,
-			'token' : token,
-			'status' : 0,
-			'info_fiscal' : {
-				'nombre_fiscal' : '',
-				'rfc' : '',
-				'direccion' : '',
-				'estado' : '',
-				'municipio' : '',
-				'cp' : ''
-			},
-      'plan' : {
-    		'fecha_inicio' : '',
-    		'fecha_fin' : '',
-    		'tipo_plan' : ''
-    	}
+			nombre : user.name.toUpperCase(),
+			email : user.email.toUpperCase(),
+			token : token,
+			status : 0,
+            roles: {
+                admin: true
+            }
 		}
 	}
 }

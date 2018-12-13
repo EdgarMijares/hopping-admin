@@ -8,6 +8,7 @@ import { AuthService } from '../../services/auth.service';
 
 import { MunicipiosService } from '../../services/municipios.service';
 import { Estados, Municipios } from '../../models/models';
+import { Fiscal } from '../../models/user';
 
 @Component({
   selector: 'app-newhop',
@@ -50,16 +51,15 @@ export class NewhopComponent implements OnInit {
 			this.createMessageAlert('Tu CP esta incompleto');
 		} else {
 			this.auth.getUID().subscribe(d => {
-				if(d.uid != null) {
+				if(d.uid != null)
 					this.saveUser(d.uid, data);
-				}
-			});
+			})
 			this.dialogRef.close();
         }
     }
 
     saveUser(id:string, fiscal:Fiscal) {
-        this._fireStore.collection('users').doc(id).update({status: 1, info_fiscal: { fiscal }})
+        this._fireStore.collection('users').doc(id).update({status: 1, fiscal })
           .then(status => console.log(status))
           .catch(error => console.log(error));
     }
@@ -71,13 +71,4 @@ export class NewhopComponent implements OnInit {
 	createMessageAlert(dialog) {
 		this.dialogs.open(dialog, 'Aceptar' ,{ duration: 2000 });
 	}
-}
-
-export interface Fiscal {
-	nombre_fiscal: string;
-	rfc: string;
-	direccion: string;
-	estado: string;
-	municipio: string;
-	cp: string;
 }

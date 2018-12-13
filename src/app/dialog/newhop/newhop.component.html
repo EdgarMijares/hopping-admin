@@ -2,11 +2,13 @@
 <form (ngSubmit)="newHop(hop.value)" #hop="ngForm" class="animated fadeIn">
 <mat-dialog-content class="mat-typography">
 	<mat-form-field color="accent" class="col-12">
-		<input required matInput placeholder="Nombre fiscal" color="accent" name="nombre_fiscal" ngModel>
+		<input required matInput #nombre placeholder="Nombre fiscal" color="accent" name="nombre_fiscal" ngModel
+				(nombre)="nombre.vale=$event.target.value.toUpperCase()">
 	</mat-form-field>
 
 	<mat-form-field hintLabel="Max 13 caracteres" color="accent" class="col-12">
-		<input required matInput #rfc maxlength="13" placeholder="RFC" color="accent" name="rfc" ngModel >
+		<input required matInput #rfc maxlength="13" placeholder="RFC" color="accent" name="rfc" ngModel uppercase
+				(rfc)="rfc.vale=$event.target.value.toUpperCase()">
 		<mat-hint align="end">{{ rfc.value?.length || 0 }}/13</mat-hint>
 	</mat-form-field>
 
