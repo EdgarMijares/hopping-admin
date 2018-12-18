@@ -1,12 +1,19 @@
+/**
+*   El servicio se encarga de referenciar los datos de usario y de su cuenta
+*   para el logeo correcto por diferentes metodos
+*   Documentacion oficial de
+*   https://firebase.google.com/docs/auth/web/manage-users?hl=es-419
+*
+*/
+
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreCollection  } from '@angular/fire/firestore';
+import { AngularFirestore  } from '@angular/fire/firestore';
 
 import { User, UserGoogle, UserFacebook } from '../models/user';
 import * as firebase from 'firebase/app';
 import { Router } from '@angular/router';
-import { map } from 'rxjs/operators';
 
 import { Observable } from 'rxjs';
 @Injectable({
@@ -18,12 +25,12 @@ export class AuthService {
 	status: boolean;
 	info_user: User;
 
-  constructor(private _angularFireAuth: AngularFireAuth,
-    private _angularFirestore: AngularFirestore,
-    private router: Router) {
-			this.user = this._angularFireAuth.authState;
-			this.user.subscribe(data => {(data != null)? this.router.navigate(['myhop']): this.router.navigate(['/'])})
-	}
+    constructor(private _angularFireAuth: AngularFireAuth,
+        private _angularFirestore: AngularFirestore,
+        private router: Router) {
+    		this.user = this._angularFireAuth.authState;
+    		this.user.subscribe(data => {(data != null)? this.router.navigate(['myhop']): this.router.navigate(['/'])})
+    }
 
 	createUserEmail(email: string, password: string, user:any) {
 		this._angularFireAuth.auth
