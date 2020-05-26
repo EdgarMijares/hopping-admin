@@ -1,0 +1,45 @@
+<h3 mat-dialog-title>Datos fiscales.</h3>
+<form (ngSubmit)="newHop(hop.value)" #hop="ngForm" class="animated fadeIn">
+<mat-dialog-content class="mat-typography">
+	<mat-form-field color="accent" class="col-12">
+		<input required matInput #nombre placeholder="Nombre fiscal" color="accent" name="nombre_fiscal" ngModel
+				(nombre)="nombre.vale=$event.target.value.toUpperCase()">
+	</mat-form-field>
+
+	<mat-form-field hintLabel="Max 13 caracteres" color="accent" class="col-12">
+		<input required matInput #rfc maxlength="13" placeholder="RFC" color="accent" name="rfc" ngModel uppercase
+				(rfc)="rfc.vale=$event.target.value.toUpperCase()">
+		<mat-hint align="end">{{ rfc.value?.length || 0 }}/13</mat-hint>
+	</mat-form-field>
+
+	<mat-form-field color="accent" class="col-12">
+		<textarea required matInput #direccion maxlength="100" placeholder="Direccion fiscal" color="accent" name="direccion" ngModel></textarea>
+		<mat-hint align="end">{{ direccion.value?.length || 0 }}/100</mat-hint>
+	</mat-form-field>
+
+	<mat-form-field color="accent" class="col-12" >
+		<mat-select placeholder="Estado" name="estado" ngModel>
+			<mat-option required *ngFor="let estado of estados" value="{{ estado.name }}" (click)="cargarMunicipios(estado?.id)">
+				{{ estado.name }}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+
+	<mat-form-field color="accent" class="col-12 col-md-6">
+		<mat-select required placeholder="Municipio" name="municipio" ngModel>
+			<mat-option *ngFor="let municipio of municipios" value="{{ municipio.name }}">
+				{{ municipio.name }}
+			</mat-option>
+		</mat-select>
+	</mat-form-field>
+
+	<mat-form-field color="accent" class="col-12 col-md-6" hintLabel="">
+		<input required matInput #cp maxlength="5" placeholder="Codigo Postal" color="accent" name="cp" ngModel>
+		<mat-hint align="end">{{ cp.value?.length || 0 }}/5</mat-hint>
+	</mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button cdkFocusInitial>Guardar</button>
+</mat-dialog-actions>
+</form>

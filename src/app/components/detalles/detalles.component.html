@@ -1,0 +1,22 @@
+<h1 class="text-center">Detalles de cuenta</h1>
+<hr>
+<div class="container animated fadeIn">
+    <div *ngIf="plan?.length > 1">
+        <mat-accordion  *ngFor="let hop of plan" >
+    		<mat-expansion-panel>
+    			<mat-expansion-panel-header>
+    				<mat-panel-title>DIRECCION</mat-panel-title>
+    				<mat-panel-description>DESCRIPCION</mat-panel-description>
+    			</mat-expansion-panel-header>
+    			<div class="">
+                    <app-detalle></app-detalle>
+    			</div>
+    		</mat-expansion-panel>
+    		<br>
+    	</mat-accordion>
+    </div>
+    <div  *ngIf="plan?.length == 1">
+        <app-detalle></app-detalle>
+    </div>
+</div>
+<br>

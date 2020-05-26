@@ -1,0 +1,24 @@
+<h1 class="text-center">Opciones</h1>
+<hr>
+<div class="container animated fadeIn" >
+  <h4>Usuario</h4>
+  <form (ngSubmit)="logInUser(objeto.value)" #objeto="ngForm" novalidate="" class="animated fadeIn">
+    <!-- <div>
+      nombre, correo, telefono, rfc, direccion fiscal, tarjeta de credito
+    </div> -->
+    <mat-form-field color="accent" class="col-9">
+      <input matInput placeholder="Usuario" color="accent" name="user" ngModel>
+    </mat-form-field>
+    <mat-form-field color="accent" class="col-12">
+      <input matInput placeholder="Correo electronico" [formControl]="email" required >
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="col-12">
+      <input matInput placeholder="Direccion" name="direccion">
+    </mat-form-field>
+  </form>
+  <hr>
+
+  <h4>Datos de facturación</h4>
+  <button type="button" class="btn  bg-success col-6"><i class="fa fa-credit-card"></i>PAGAR</button>
+</div>

@@ -1,0 +1,80 @@
+<div class="demo">
+	<div class="container">
+      <div class="row">
+          <div class="col-12 col-md-6">
+              <div class="pricingTable">
+                  <div class="pricingTable-header">
+                      <h3 class="heading">Plan Uno</h3>
+                      <span class="subtitle">{{ listPriceOne[0] }}</span>
+                      <div class="price-value">3000
+                          <span class="currency">$</span>
+                          <span class="month">/mes</span>
+	                  </div>
+					</div>
+					<ul class="pricing-content">
+						<div *ngFor="let data_plan of listPriceOne">
+							<li>{{ data_plan }}</li>
+						</div>
+					</ul>
+                  <a (click)="subscribePlan('simple')" class="read" >Comprar<i class="fa fa-angle-right"></i></a>
+              </div>
+          </div>
+
+          <div class="col-12 col-md-6">
+              <div class="pricingTable">
+                  <div class="pricingTable-header">
+                      <h3 class="heading">Plan Dos</h3>
+                      <span class="subtitle">{{ listPriceTwo[0] }}</span>
+                      <div class="price-value">5250
+                          <span class="currency">$</span>
+                          <span class="month">/mes</span>
+                      </div>
+                  </div>
+					<ul class="pricing-content" >
+						<div *ngFor="let data_plan of listPriceTwo">
+							<li>{{ data_plan }}</li>
+						</div>
+					</ul>
+                  <a (click)="subscribePlan('doble')" class="read">Comprar<i class="fa fa-angle-right"></i></a>
+              </div>
+          </div>
+          <div class="col-12 col-md-6">
+              <div class="pricingTable">
+                  <div class="pricingTable-header">
+                      <h3 class="heading">Plan Tres</h3>
+                      <span class="subtitle">{{ listPriceTwo[0] }}</span>
+                      <div class="price-value">6750
+                          <span class="currency">$</span>
+                          <span class="month">/mes</span>
+                      </div>
+                  </div>
+					<ul class="pricing-content" >
+						<div *ngFor="let data_plan of listPriceThree">
+							<li>{{ data_plan }}</li>
+						</div>
+					</ul>
+                  <a (click)="subscribePlan('triple')" class="read">Comprar<i class="fa fa-angle-right"></i></a>
+              </div>
+          </div>
+
+					<div class="col-12 col-md-6">
+              <div class="pricingTable gold">
+                  <div class="pricingTable-header">
+                      <h3 class="heading">Plan cuatro</h3>
+                      <span class="subtitle">{{ listPriceFour[0] }}</span>
+                      <div class="price-value">8000
+                          <span class="currency">$</span>
+                          <span class="month">/mes</span>
+                      </div>
+                  </div>
+					<ul class="pricing-content" >
+						<div *ngFor="let data_plan of listPriceFour">
+							<li>{{ data_plan }}</li>
+						</div>
+					</ul>
+                  <a (click)="subscribePlan('gold')" class="read">Comprar<i class="fa fa-angle-right"></i></a>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>

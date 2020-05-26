@@ -1,0 +1,74 @@
+<!-- <form (ngSubmit)="getData(objeto)" #objeto="ngForm" class="animated fadeIn"> -->
+<form [formGroup]="data" (ngSubmit)="getData()" class="animated fadeIn">
+    <h4 class="text-center">HORARIOS DE SERVICIO</h4>
+    <br>
+    <div class="container">
+        <div class="row" formGroupName="dias_de_servicio">
+            <div class="col col-6  col-sm-3" *ngFor="let item of weekServicio; let i = index">
+                <mat-checkbox (click)="showList(i)"
+                              name="{{ item | lowercase }}"
+                              formControlName="{{ item | lowercase}}">
+                              {{ item }}
+                </mat-checkbox>
+            </div>
+            <div class="col-12 col-sm-6">
+                <mat-form-field class="col-12">
+                    <mat-select placeholder="Hora de inicio" name="apertura" formControlName="apertura">
+                        <mat-option *ngFor="let hora of horas"
+                                    value="{{ hora.value }}">
+                            {{ hora.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-6">
+                <mat-form-field class="col-12">
+                    <mat-select placeholder="Hora de termino" name="cierre" formControlName="cierre">
+                        <mat-option *ngFor="let hora of horas"
+                                    value="{{ hora.value }}">
+                            {{ hora.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <h4 class="text-center">HORARIOS DE RESERVACIÓN</h4>
+    <div class="container" formGroupName="dias_de_reservacion">
+        <br>
+        <div class="row">
+            <div class="col col-6  col-sm-3" *ngFor="let item of weekServicio; let i = index">
+                <mat-checkbox [disabled]="weekReservacion[i]"
+                            name="{{ item | lowercase }}"
+                            formControlName="{{ item | lowercase }}">
+                            {{ item }}
+                </mat-checkbox>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6">
+                <mat-form-field class="col-12">
+                    <mat-select placeholder="Hora de inicio" name="apertura" formControlName="apertura">
+                        <mat-option *ngFor="let hora of horas" value="{{ hora.value }}">
+                            {{ hora.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-sm-6">
+                <mat-form-field class="col-12">
+                    <mat-select placeholder="Hora de termino" name="cierre" formControlName="cierre">
+                        <mat-option *ngFor="let hora of horas"
+                                    value="{{ hora.value }}">
+                            {{ hora.viewValue }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-md-12">
+                <button type="submit" class="btn btn-rosa col-12">GUARDAR</button>
+            </div>
+        </div>
+    </div>
+</form>

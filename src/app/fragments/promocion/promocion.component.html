@@ -1,0 +1,32 @@
+<div class="row">
+    <mat-form-field hintLabel="Max 300 caracteres" class="col-12 col-sm-6 paddin-top">
+        <textarea matInput #lunes maxlength="300" placeholder="Lunes"></textarea>
+        <mat-hint align="end">{{ lunes.value?.length || 0 }}/300</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 300 caracteres" class="col-12 col-sm-6 paddin-top">
+        <textarea matInput #martes maxlength="300" placeholder="Martes"></textarea>
+        <mat-hint align="end">{{ martes.value?.length || 0 }}/300</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 300 caracteres" class="col-12 col-sm-6 paddin-top">
+        <textarea matInput #miercoles maxlength="300" placeholder="Miercoles"></textarea>
+        <mat-hint align="end">{{ miercoles.value?.length || 0 }}/300</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 300 caracteres" class="col-12 col-sm-6 paddin-top">
+        <textarea matInput #jueves maxlength="300" placeholder="Jueves"></textarea>
+        <mat-hint align="end">{{ jueves.value?.length || 0 }}/300</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 300 caracteres" class="col-12 col-sm-6 paddin-top">
+        <textarea matInput #viernes maxlength="300" placeholder="Viernes"></textarea>
+        <mat-hint align="end">{{ viernes.value?.length || 0 }}/300</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 300 caracteres" class="col-12 col-sm-6 paddin-top">
+        <textarea matInput #sabado maxlength="300" placeholder="Sabado"></textarea>
+        <mat-hint align="end">{{ sabado.value?.length || 0 }}/300</mat-hint>
+    </mat-form-field>
+    <mat-form-field hintLabel="Max 300 caracteres" class="col-12 col-sm-6 paddin-top">
+        <textarea matInput #domingo maxlength="300" placeholder="Domingo"></textarea>
+        <mat-hint align="end">{{ domingo.value?.length || 0 }}/300</mat-hint>
+    </mat-form-field>
+</div>
+<hr>
+<button class="btn btn-rosa col-12">GUARDAR</button>

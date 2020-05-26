@@ -1,0 +1,33 @@
+<div class="wrapper">
+    <aside class="main_sidebar">
+        <ul>
+			<div class="center-profile">
+				<img class="circle-picture img-responsive center-block" src="/assets/hopping/imagotipo_hopping.png" alt="Avatar">
+			</div>
+            <li routerLinkActive="active">
+              <i class="fa fa-home"></i><a [routerLink]="['myhop']">My Hop</a>
+            </li>
+            <li routerLinkActive="active">
+              <i class="fa fa-info-circle"></i><a [routerLink]="['detalles']">Detalles cuenta</a>
+            </li>
+            <li routerLinkActive="active">
+              <i class="fa fa-bell"></i><a [routerLink]="['reservaciones']">Reservaciones</a>
+            </li>
+            <li routerLinkActive="active">
+              <i class="fa fa-percent"></i><a [routerLink]="['promociones']">Promociones</a>
+            </li>
+            <li routerLinkActive="active">
+              <i class="fa fa-image"></i><a [routerLink]="['galeria']">Galeria</a>
+            </li>
+            <li routerLinkActive="active">
+              <i class="fa fa-eye"></i><a [routerLink]="['feed']">Feed</a>
+            </li>
+            <li routerLinkActive="active">
+              <i class="fa fa-ellipsis-h"></i><a [routerLink]="['opciones']">Opciones</a>
+            </li>
+            <li (click)="_authService.logOut()">
+              <i class="fa fa-exit"></i><a>Salir</a>
+            </li>
+        </ul>
+    </aside>
+</div>

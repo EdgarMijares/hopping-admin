@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.bg-login {
+  background-color: #000;
+  height: 100vh;
+}
+
+img {
+  display: block;
+  margin: auto;
+}
+
+.container-form {
+  background: #eee;
+  /* max-width: 90%; */
+  border-radius: 5px;
+	min-height: 530px;
+
+}
+
+.padding-login {
+  padding: 20px;
+}
+input{
+  /* color: #FFF; */
+}
+
+.tab-icon {
+  margin-right: 8px;
+}
+.icon-input{
+  margin-top: 15px;
+}
+
+.facebook{
+  color: #FFF;
+  background: #3b5998;
+}
+
+.google {
+  color: #FFF;
+  background: #d62d20;
+}
+.image-size {
+  max-width: 200px;
+}
+
+.padding-top {
+  padding-top: 30px;
+}
+
+.margin-top-10 {
+	margin-top: 10px;
+}
+
+@media screen and (max-width: 600px) {
+	.centrado-porcentual {
+	    width: 80%
+	}
+}
